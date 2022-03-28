@@ -1,5 +1,3 @@
-# lotto
-
 ## Build Setup
 
 ```bash
