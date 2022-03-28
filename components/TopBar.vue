@@ -13,10 +13,9 @@
         <nuxt-link to="/">
           <div style="width: 45px; height: 45px">
             <img
-              class="rounded-circle"
               width="100%"
               height="100%"
-              src="logo.png"
+              src="logoTravel.png"
               alt=""
             />
           </div>
