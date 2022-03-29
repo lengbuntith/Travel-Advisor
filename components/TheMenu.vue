@@ -22,7 +22,7 @@
         <div class="d-flex justify-center flex-wrap">
           <div v-for="(s, i) in sub" :key="i">
             <img height="100" :src="s.image" :alt="s.name" />
-            <div class="text-center"> {{ s.name }} </div>
+            <div class="text-center">{{ s.name }}</div>
           </div>
         </div>
       </v-container>

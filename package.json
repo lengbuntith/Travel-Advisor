@@ -12,7 +12,8 @@
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
     "swiper": "^5.4.5",
-    "vue-awesome-swiper": "^4.1.1"
+    "vue-awesome-swiper": "^4.1.1",
+    "vue2-google-maps": "^0.10.7"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.3",
