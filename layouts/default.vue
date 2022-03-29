@@ -41,6 +41,12 @@ export default {
   input {
   color: grey;
 }
+//height search
+.v-text-field.v-text-field--solo .v-input__control {
+  min-height: 38px;
+  padding: 0;
+}
+
 //background search
 .theme--light.v-text-field--solo-inverted.v-input--is-focused
   > .v-input__control
