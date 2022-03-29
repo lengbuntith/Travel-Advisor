@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss">
 @import '~vuetify/src/components/VStepper/_variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 //font awesome https://fontawesome.com/v6/search
