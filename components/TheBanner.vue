@@ -5,6 +5,7 @@
         <v-img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg"
           class="banner"
+          gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
         >
         </v-img>
       </swiper-slide>

@@ -17,7 +17,7 @@
                 class="rounded-circle"
                 width="100%"
                 height="100%"
-                src="logoTravel.png"
+                src="/images/logoTravel.png"
                 alt=""
               />
             </div>
@@ -65,12 +65,6 @@
         </v-container>
       </v-toolbar>
     </v-card>
-    <div class="nav-down">
-      <ul>
-        <li><a href="#1">SUGGESTIONS</a></li>
-        <li><a href="#2">EVENTS</a></li>
-      </ul>
-    </div>
   </div>
 </template>
 
@@ -114,62 +108,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-@import '~vuetify/src/components/VStepper/_variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-.v-application a {
-  color: rgba(64, 179, 162);
-}
-
-.mdi-magnify::before {
-  content: '\F0349';
-  padding: 0.7vw;
-}
-label {
-  cursor: default;
-  margin-left: 10px;
-}
-
-.nav-down {
-  height: 37px;
-  display: flex;
-  align-items: center;
-  background-color: #eeeeee;
-}
-ul {
-  list-style-type: none;
-  display: flex;
-}
-ul li > a {
-  text-decoration: none;
-  padding: 0.4vw 1vw;
-  font-weight: 600;
-}
-
-@media (min-width: 960px) {
-  .navbar {
-    padding-left: 20px !important;
-  }
-}
-
-@media (max-width: 959px) {
-  .navbar {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-}
-
-.navicon .v-btn__content {
-  justify-content: left !important;
-}
-
-//responsive
-@media (min-width: 768px) {
-  .navbar {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-}
-</style>
