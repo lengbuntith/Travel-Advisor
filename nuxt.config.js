@@ -38,7 +38,13 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxtjs/axios'],
+
+  axios: {
+    // baseURL: 'https://travel-advisor-backend.vercel.app',
+    baseURL: 'http://localhost:3001',
+    credentials: true,
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

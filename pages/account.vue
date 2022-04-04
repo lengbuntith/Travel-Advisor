@@ -1,6 +1,6 @@
 <template>
   <div class="my-10">
-    <v-toolbar flat color="primary" dark>
+    <v-toolbar flat rounded color="primary" dark>
       <v-toolbar-title>Account</v-toolbar-title>
     </v-toolbar>
 
@@ -31,6 +31,7 @@ import MyProfile from '~/components/Account/MyProfile.vue'
 import SavedPlace from '~/components/Account/SavedPlace.vue'
 import ChangePassword from '~/components/Account/ChangePassword.vue'
 export default {
+  middleware: ['auth'],
   components: {
     MyProfile,
     SavedPlace,
