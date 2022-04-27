@@ -1,7 +1,9 @@
 <template>
   <v-app>
-    <TopBar />
-    <BottomBar />
+    <div style="position: sticky; top: 0; z-index: 999">
+      <TopBar />
+      <BottomBar />
+    </div>
     <v-main>
       <v-container class="px-5">
         <Nuxt />

@@ -12,9 +12,8 @@
           </span>
 
           <nuxt-link to="/">
-            <div style="width: 45px; height: 45px">
+            <div style="width: 34px">
               <img
-                class="rounded-circle"
                 width="100%"
                 height="100%"
                 src="/images/logoTravel.png"
@@ -43,6 +42,10 @@
             label="Which places are you want to visit?"
             solo-inverted
             clearable
+            dense
+            no-data-text=""
+            color="teal lighten-2"
+            solo
           ></v-autocomplete>
           <v-spacer></v-spacer>
           <TheLanguage />

@@ -19,7 +19,12 @@
         link
         @click="changeLanguage(item.code)"
       >
-        <img class="mr-3" :src="`/images/countries/${item.code}.png`" alt="" />
+        <img
+          class="mr-3"
+          :src="`/images/countries/${item.code}.png`"
+          alt=""
+          height="10px"
+        />
         <span>{{ item.lang }}</span>
       </v-list-item>
     </v-list>

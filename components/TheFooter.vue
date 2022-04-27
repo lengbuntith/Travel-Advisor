@@ -89,6 +89,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url(https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css);
 .v-application .pt-0 {
   margin-top: 20px;
 }

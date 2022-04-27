@@ -1,14 +1,15 @@
 <template>
   <v-card
-    class="pointer image-slide"
+    class="pointer"
     elevation="0"
     :to="`/place/${place.name}`"
     max-width="300"
+    max-height="300"
   >
     <v-img
       aspect-ratio="1"
       :src="place.image"
-      class="white--text"
+      class="white--text image-slide"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
       <!-- <slot name="icon"></slot> -->
@@ -16,12 +17,12 @@
         <div></div>
         <div>
           <v-btn icon>
-            <v-icon color="rgba(250,250,250,0.6)">mdi-heart</v-icon>
+            <!-- <v-icon color="rgba(250,250,250,0.6)">mdi-heart</v-icon> -->
           </v-btn>
         </div>
       </v-card-title>
       <v-card-actions style="height: 65%" class="justify-center align-center">
-        <div class="ma-0 text-capitalize text-lg-h6">
+        <div class="ma-0 text-capitalize text-lg-h5">
           {{ place.name }}
         </div>
         <!-- <span class="grey--text text--lighten-2 text-caption mr-2">

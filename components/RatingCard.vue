@@ -21,7 +21,7 @@
         </div>
       </v-card-title>
       <v-card-actions style="height: 65%" class="justify-center align-center">
-        <div class="ma-0 text-capitalize text-lg-h6">
+        <div class="ma-0 text-capitalize text-lg-h5">
           {{ place.name }}
         </div>
         <!-- <span class="grey--text text--lighten-2 text-caption mr-2">
@@ -38,12 +38,27 @@
         ></v-rating> -->
       </v-card-actions>
     </v-img>
-    <!-- <div style="height: 58px; overflow: hidden" class="ma-0 text-capitalize">
-      {{ place.name }}
+    <div
+      style="height: 68px; overflow: hidden; background-color: #eee"
+      class="ma-0 text-capitalize pl-1 pr-1"
+    >
+      <v-rating
+        v-model="rating"
+        background-color="black"
+        color="rgba(62,179,162,1)"
+        dense
+        half-increments
+        icon-label="custom icon label text {0} of {1}"
+        size="13"
+      ></v-rating>
+      <div style="font-size: 10px" class="d-flex justify-space-between">
+        <div>Located: Seam Reap</div>
+        <div><i class="fa-light fa-comment"></i> 230 Reviews</div>
+      </div>
       <hr />
       <i class="fal fa-map-marker-alt fa-sm"></i>
       <span style="font-size: 10px">113 st seam reap, Cambodia</span>
-    </div> -->
+    </div>
   </v-card>
 </template>
 

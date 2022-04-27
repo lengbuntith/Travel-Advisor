@@ -1,14 +1,16 @@
 <template>
   <v-card
-    class="pointer image-slide"
+    class="pointer pt-10"
     elevation="0"
     :to="`/place/${place.name}`"
-    max-width="300"
+    max-width="220"
   >
     <v-img
+      :height="`${height}`"
       aspect-ratio="1"
       :src="place.image"
-      class="white--text"
+      class="white--text image-slide"
+      :class="`mt-${parseInt(height) - 205}`"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
       <!-- <slot name="icon"></slot> -->
@@ -16,11 +18,11 @@
         <div></div>
         <div>
           <v-btn icon>
-            <v-icon color="rgba(250,250,250,0.6)">mdi-heart</v-icon>
+            <!-- <v-icon color="rgba(250,250,250,0.6)">mdi-heart</v-icon> -->
           </v-btn>
         </div>
       </v-card-title>
-      <v-card-actions style="height: 65%" class="justify-center align-center">
+      <v-card-actions style="height: 65%" class="justify-center align-end">
         <div class="ma-0 text-capitalize text-lg-h6">
           {{ place.name }}
         </div>
@@ -49,7 +51,7 @@
 
 <script>
 export default {
-  props: ['place'],
+  props: ['place', 'height'],
   data() {
     return {
       rating: 4,
