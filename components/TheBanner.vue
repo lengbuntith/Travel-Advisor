@@ -1,9 +1,8 @@
 <template>
   <div>
     <swiper class="swiper rounded-lg" :options="swiperOption">
-      <swiper-slide class="swiper-slide" v-for="i in images.length" :key="i">
-        <v-img v-bind:src="images[parseInt(i - 1)]" class="banner">
-          {{ images[parseInt(i - 1)] }}
+      <swiper-slide class="swiper-slide" v-for="(i,index) in images" :key="index">
+        <v-img :src="i" class="banner">
         </v-img>
       </swiper-slide>
 
