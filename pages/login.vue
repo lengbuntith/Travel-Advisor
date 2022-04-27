@@ -4,20 +4,25 @@
       <h3>Login your account</h3>
 
       <form id="loginForm">
-        <v-text-field label="Phone number"></v-text-field>
-        <v-text-field label="Password"></v-text-field>
+        <v-text-field
+          value="tith@gmail.com"
+          name="email"
+          required
+          label="Email"
+        ></v-text-field>
+        <v-text-field
+          value="12345678"
+          name="password"
+          required
+          label="Password"
+        ></v-text-field>
+        <div class="d-flex justify-space-between">
+          <v-btn type="submit" width="150" elevation="0" color="primary"
+            >Sign In</v-btn
+          >
+          <v-btn text>Forget Password ?</v-btn>
+        </div>
       </form>
-
-      <div class="d-flex justify-space-between">
-        <v-btn
-          width="150"
-          elevation="0"
-          color="primary"
-          @click="dialog.value = false"
-          >Sign In</v-btn
-        >
-        <v-btn text>Forget Password ?</v-btn>
-      </div>
 
       <div class="d-flex justify-center mt-10">
         <v-btn to="/register" text>Don't have an account ?</v-btn>
@@ -27,11 +32,41 @@
 </template>
 
 <script>
+import { checkUser } from '~/utils/checkUser'
+
 export default {
-    mounted () {
-        
-    },
+  created() {
+    if (checkUser()) {
+      this.$router.push('/account')
+    }
+  },
+
+  mounted() {
+    let form = document.getElementById('loginForm')
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+
+      let email = e.target.email.value
+      let password = e.target.password.value
+
+      this.$axios({
+        method: 'post',
+        url: '/auth/login',
+        data: {
+          email: email,
+          password: password,
+        },
+      })
+        .then((res) => {
+          console.log(res.data)
+          this.$router.push('/account')
+        })
+        .catch((err) => {
+          console.log(err.response)
+        })
+    })
+  },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
