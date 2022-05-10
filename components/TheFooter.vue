@@ -126,8 +126,65 @@ a {
   text-align: start;
   text-decoration: none;
   color: #f0f3f2 !important;
+  // // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
+  // background-image: linear-gradient(to right, #23abd4, #23abd4 50%, #fff 50%);
+  // background-size: 200% 100%;
+  // background-position: -100%;
+  // transition: all 0.3s ease-in-out;
 }
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
+// #primary {
+//   position: absolute;
+//   top: 0;
+//   margin: auto;
+//   text-align: center;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100%;
+// }
+li {
+  // margin: 0 20px;
+  position: relative;
+}
+// li a {
+//   text-decoration: none;
+//   display: block;
+//   padding: 5px 0;
+//   font-family: 'Open Sans';
+//   font-size: 26px;
+//   line-height: 1;
+//   font-weight: bold;
+//   position: relative;
+//   z-index: 1;
+//   text-align: center;
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+//   background-image: linear-gradient(to right, #23abd4, #23abd4 50%, #fff 50%);
+//   background-size: 200% 100%;
+//   background-position: -100%;
+//   transition: all 0.3s ease-in-out;
+// }
+li a:before {
+  // display: block;
+  content: '';
+  width: 0;
+  height: 3px;
+  bottom: 5px;
+  left: 0;
+  bottom: -3px;
+  z-index: 0;
+  position: absolute;
+  background: #23abd4;
+  transition: all 0.3s ease-in-out;
+}
+li a:hover {
+  background-position: 0%;
+}
+li a:hover:before {
+  width: 100%;
+}
 @media (max-width: 768px) {
   .mdi:before,
   .mdi-set {

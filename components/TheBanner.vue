@@ -1,8 +1,13 @@
 <template>
   <div>
     <swiper class="swiper rounded-lg" :options="swiperOption">
-      <swiper-slide class="swiper-slide" v-for="(i,index) in images" :key="index">
+      <swiper-slide
+        class="swiper-slide"
+        v-for="(i, index) in images"
+        :key="index"
+      >
         <v-img :src="i" class="banner">
+          {{ index }}
         </v-img>
       </swiper-slide>
 

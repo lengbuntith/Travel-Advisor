@@ -1,5 +1,6 @@
 <template>
   <div>
+    <map-svg />
     <TheBanner />
     <PlaceSlide
       v-for="(place, index) in places"
@@ -38,10 +39,11 @@
 
 <script>
 import LocalSlide from '~/components/LocalSlide.vue'
+import MapSvg from '~/components/MapSvg.vue'
 import RatingSlide from '~/components/RatingSlide.vue'
 import TrendsSlide from '~/components/TrendsSlide.vue'
 export default {
-  components: { RatingSlide, LocalSlide, TrendsSlide },
+  components: { RatingSlide, LocalSlide, TrendsSlide, MapSvg },
   name: 'Home',
   data() {
     return {
