@@ -133,17 +133,6 @@ a {
   // background-position: -100%;
   // transition: all 0.3s ease-in-out;
 }
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
-// #primary {
-//   position: absolute;
-//   top: 0;
-//   margin: auto;
-//   text-align: center;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 100%;
-// }
 li {
   // margin: 0 20px;
   position: relative;
@@ -166,24 +155,10 @@ li {
 //   background-position: -100%;
 //   transition: all 0.3s ease-in-out;
 // }
-li a:before {
-  // display: block;
-  content: '';
-  width: 0;
-  height: 3px;
-  bottom: 5px;
-  left: 0;
-  bottom: -3px;
-  z-index: 0;
-  position: absolute;
-  background: #23abd4;
-  transition: all 0.3s ease-in-out;
-}
 li a:hover {
-  background-position: 0%;
-}
-li a:hover:before {
-  width: 100%;
+  color: #090909 !important;
+  border-bottom: 2px solid yellow;
+  transition: all 0.2s ease-in-out;
 }
 @media (max-width: 768px) {
   .mdi:before,
