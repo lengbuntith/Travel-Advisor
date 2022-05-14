@@ -64,7 +64,7 @@ export default {
 </script>
 <style lang="scss">
 .swiper {
-  max-height: 480px;
+  max-height: 380px;
 }
 </style>
 

@@ -1,7 +1,6 @@
 <template>
   <div>
     <SuggestionCard />
-    Suggestion Page
   </div>
 </template>
 

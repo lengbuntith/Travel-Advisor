@@ -13,39 +13,18 @@
       :class="`mt-${parseInt(height) - 205}`"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
-      <!-- <slot name="icon"></slot> -->
       <v-card-title class="d-flex justify-space-between" style="padding: 0">
         <div></div>
         <div>
-          <v-btn icon>
-            <!-- <v-icon color="rgba(250,250,250,0.6)">mdi-heart</v-icon> -->
-          </v-btn>
+          <v-btn icon> </v-btn>
         </div>
       </v-card-title>
       <v-card-actions style="height: 65%" class="justify-center align-end">
         <div class="ma-0 text-capitalize text-lg-h6">
           {{ place.name }}
         </div>
-        <!-- <span class="grey--text text--lighten-2 text-caption mr-2">
-          ({{ rating }})
-        </span>
-        <v-rating
-          v-model="rating"
-          background-color="white"
-          color="yellow accent-4"
-          dense
-          half-increments
-          icon-label="custom icon label text {0} of {1}"
-          size="13"
-        ></v-rating> -->
       </v-card-actions>
     </v-img>
-    <!-- <div style="height: 58px; overflow: hidden" class="ma-0 text-capitalize">
-      {{ place.name }}
-      <hr />
-      <i class="fal fa-map-marker-alt fa-sm"></i>
-      <span style="font-size: 10px">113 st seam reap, Cambodia</span>
-    </div> -->
   </v-card>
 </template>
 

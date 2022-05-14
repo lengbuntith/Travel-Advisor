@@ -1,7 +1,7 @@
 <template>
   <div>
-    <map-svg />
-    <TheBanner />
+    <map-svg v-if="show" />
+    <TheBanner v-else />
     <PlaceSlide
       v-for="(place, index) in places"
       :key="index"
@@ -47,6 +47,8 @@ export default {
   name: 'Home',
   data() {
     return {
+      show: true,
+      windowWidth: window.innerWidth,
       places: [
         {
           category: 'Perfect Places',
@@ -133,6 +135,12 @@ export default {
               image:
                 'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
             },
+
+            {
+              name: 'Angkor Wat',
+              image:
+                'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+            },
           ],
         },
       ],
@@ -202,6 +210,24 @@ export default {
         },
       ],
     }
+  },
+
+  //render width
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
+  methods: {
+    handleResize() {
+      if (window.innerWidth < 1281 && this.show == true) {
+        this.show = false
+      } else if (window.innerWidth >= 1281) {
+        this.show = true
+      }
+    },
   },
 }
 </script>

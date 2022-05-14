@@ -14,59 +14,68 @@
         class="white--text pt-0 d-flex flex-row justify-start"
         width="100%"
       >
-        <div class="main-footer">
-          <ul>
-            <li style="text-align: start; margin-left: 3vw">
-              <h3>Cambo Travel</h3>
-              <div>
-                Continue your learning with related content selected by the Team
-                or move between pages by using the navigation links
-                below.Continue your learning with related content selected by
-                the Team or move between pages by using the navigation links
-                below.
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div style="text-align: start; padding-left: 15vw">
-          <h3>Useful Links</h3>
-          <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/home">Suggestions</a></li>
-            <li><a href="/home">Event</a></li>
-            <li><a href="/home">Login</a></li>
-            <li><a href="/home">Logout</a></li>
-          </ul>
-        </div>
-        <div style="text-align: start; padding-left: 13vw">
-          <h3>Support Links</h3>
-          <ul>
-            <li><a href="http://">FAQ</a></li>
-            <li><a href="http://">Help</a></li>
-            <li><a href="http://">Terms & Conditions</a></li>
-          </ul>
-        </div>
-        <div style="text-align: start; padding-left: 10vw">
-          <h3>Contact Us</h3>
-          <ul>
-            <li>
-              <a href="http://"
-                ><i class="fal fa-map-marker-alt"></i> str.134, Toul kork,
-                <span style="padding-left: 1.1vw">Phnom Penh</span>, Cambodia</a
-              >
-            </li>
-            <li>
-              <a href="mailto:abc@gmail.com"
-                ><i class="fal fa-envelope fa-sm"></i> abc@gmail.com</a
-              >
-            </li>
-            <li>
-              <a href="tel:+855975678324"
-                ><i class="fal fa-phone-square-alt fa-md"></i> 097 34335 21</a
-              >
-            </li>
-          </ul>
-        </div>
+        <v-row>
+          <v-col xs="6" sm="4" md="3" class="d-flex justify-center" id="head">
+            <div class="main-footer">
+              <ul>
+                <li style="text-align: start">
+                  <h3>Cambo Travel</h3>
+                  <div class="line-clamp">
+                    Cambo Travel will provide you advanture places in Cambodia.
+                    Useful and helpful, Cambo Travel will show you what you need
+                    to know before you go!
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </v-col>
+          <v-col xs="6" sm="4" md="3" class="d-flex justify-center">
+            <div style="text-align: start">
+              <h3>Useful Links</h3>
+              <ul>
+                <li><nuxt-link to="/">Home</nuxt-link></li>
+                <li><nuxt-link to="/suggestion">Suggestion</nuxt-link></li>
+                <li><nuxt-link to="/event">Event</nuxt-link></li>
+                <li><nuxt-link to="/login">Login</nuxt-link></li>
+              </ul>
+            </div>
+          </v-col>
+          <v-col xs="6" sm="4" md="3" class="d-flex justify-center">
+            <div style="text-align: start">
+              <h3>Support Links</h3>
+              <ul>
+                <li><nuxt-link to="/FAQ">FAQ</nuxt-link></li>
+                <li><nuxt-link to="/FAQ">Help</nuxt-link></li>
+                <li><nuxt-link to="/FAQ">Terms & Conditions</nuxt-link></li>
+              </ul>
+            </div>
+          </v-col>
+          <v-col xs="6" sm="4" md="3" class="d-flex justify-center">
+            <div style="text-align: start">
+              <h3>Contact Us</h3>
+              <ul>
+                <li>
+                  <nuxt-link to="/"
+                    ><i class="fal fa-map-marker-alt"></i> str.134, Toul kork,
+                    <span>Phnom Penh</span>, Cambodia</nuxt-link
+                  >
+                </li>
+                <li>
+                  <nuxt-link to="mailto:abc@gmail.com"
+                    ><i class="fal fa-envelope fa-sm"></i>
+                    abc@gmail.com</nuxt-link
+                  >
+                </li>
+                <li>
+                  <nuxt-link to="tel:+855975678324"
+                    ><i class="fal fa-phone-square-alt fa-md"></i> 097 34335
+                    21</nuxt-link
+                  >
+                </li>
+              </ul>
+            </div>
+          </v-col>
+        </v-row>
       </v-card-text>
 
       <!-- <v-divider><hr /></v-divider> -->
@@ -160,6 +169,13 @@ li a:hover {
   border-bottom: 2px solid yellow;
   transition: all 0.2s ease-in-out;
 }
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 @media (max-width: 768px) {
   .mdi:before,
   .mdi-set {
@@ -172,17 +188,17 @@ li a:hover {
   .v-card__text > div {
     width: 30vw;
   }
-  .main-footer {
+  #head {
     display: none;
   }
   ul {
     font-size: 12px;
   }
 
-  .v-card__subtitle,
-  .v-card__text,
-  .v-card__title {
-    padding: 0px;
-  }
+  // .v-card__subtitle,
+  // .v-card__text,
+  // .v-card__title {
+  //   padding: 0px;
+  // }
 }
 </style>

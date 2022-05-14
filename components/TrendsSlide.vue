@@ -1,17 +1,5 @@
 <template>
   <div class="my-10">
-    <div>
-      <!-- <v-btn
-        to="/perfect-places"
-        elevation="0"
-        dark
-        plain
-        color="rgba(64, 179, 162)"
-        class="mb-2 pl-0"
-        ><h2>{{ category }}</h2>
-        <i class="fas fa-caret-right fa-xl pl-1"></i>
-      </v-btn> -->
-    </div>
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide
         v-for="(place, index) in places"
@@ -23,16 +11,7 @@
           :height="height[parseInt(index)]"
         ></trends-card>
       </swiper-slide>
-      <!-- <v-btn
-        to="/perfect-places"
-        elevation="0"
-        dark
-        plain
-        color="rgba(64, 179, 162)"
-        class="mb-2 pl-0 pt-10"
-        ><h2>{{ category }}</h2>
-        <i class="fas fa-caret-right fa-xl pl-1"></i>
-      </v-btn> -->
+
       <v-layout style="margin: 2vh 0 0 1vw" class="d-flex flex-column">
         <h2 style="color: #40b3a2">{{ category }}</h2>
         <p>
@@ -48,14 +27,6 @@
           >View more</v-btn
         >
       </v-layout>
-      <!-- <div
-        class="d-none d-sm-flex swiper-button-prev swiper-button-white"
-        slot="button-prev"
-      ></div>
-      <div
-        class="d-none d-sm-flex swiper-button-next swiper-button-white"
-        slot="button-next"
-      ></div> -->
     </swiper>
   </div>
 </template>
@@ -93,15 +64,15 @@ export default {
             spaceBetween: 5,
           },
           768: {
-            slidesPerView: 4.5,
+            slidesPerView: 5,
             spaceBetween: 10,
           },
           640: {
-            slidesPerView: 3.5,
+            slidesPerView: 3,
             spaceBetween: 10,
           },
           320: {
-            slidesPerView: 2.5,
+            slidesPerView: 3,
             spaceBetween: 10,
           },
         },

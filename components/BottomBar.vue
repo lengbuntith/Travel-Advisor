@@ -2,7 +2,7 @@
   <div class="d-none d-md-block">
     <v-toolbar height="36px" elevation="0" color="#eee">
       <v-container>
-        <v-tabs v-model="tab" class="ma-0" height="35" background-color="#eee">
+        <v-tabs class="ma-0" height="35" background-color="#eee">
           <v-tabs-slider color="yellow"></v-tabs-slider>
           <v-tab
             to="/"
@@ -21,6 +21,8 @@
             class="text-uppercase text-decoration-none font-weight-bold"
           >
             event
+          </v-tab>
+          <v-tab class="text-uppercase text-decoration-none font-weight-bold">
           </v-tab>
         </v-tabs>
         <!-- <nuxt-link
