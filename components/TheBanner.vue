@@ -1,6 +1,6 @@
 <template>
   <div>
-    <swiper class="swiper rounded-lg" :options="swiperOption">
+    <swiper class="swiper banner rounded-lg" :options="swiperOption">
       <swiper-slide
         class="swiper-slide"
         v-for="(i, index) in images"
@@ -63,8 +63,13 @@ export default {
 }
 </script>
 <style lang="scss">
-.swiper {
-  max-height: 380px;
+.swiper.banner {
+  max-height: 320px;
+}
+@media (max-width: 768px) {
+  .swiper.banner {
+    max-height: 200px;
+  }
 }
 </style>
 

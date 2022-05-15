@@ -1,6 +1,18 @@
 <template>
   <div class="my-10">
-    <swiper class="swiper" :options="swiperOption">
+    <v-layout
+      style="margin: 2vh 0 0 1vw"
+      class="d-flex flex-column d-md-none justify-center align-center"
+    >
+      <h2 style="color: #40b3a2">{{ category }}</h2>
+      <p class="text-justify pr-md-10 pr-sm-0">
+        Top trends places in Cambodia, nowadays. Keep place with the latest
+        travel trends and enjoy your day in Cambodia.<nuxt-link to="/"
+          >view more</nuxt-link
+        >
+      </p>
+    </v-layout>
+    <swiper class="swiper" style="height: 300px" :options="swiperOption">
       <swiper-slide
         v-for="(place, index) in places"
         :key="index"
@@ -89,4 +101,7 @@ export default {
 .swiper-button-prev {
   color: rgba(64, 179, 162);
 }
+/* .swiper-wrapper {
+  height: 300px;
+} */
 </style>

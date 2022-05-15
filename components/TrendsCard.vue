@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="pointer pt-10"
+    class="pointer pt-lg-10"
     elevation="0"
     :to="`/place/${place.name}`"
     max-width="220"
@@ -19,7 +19,7 @@
           <v-btn icon> </v-btn>
         </div>
       </v-card-title>
-      <v-card-actions style="height: 65%" class="justify-center align-end">
+      <v-card-actions style="height: 100px" class="justify-center align-end">
         <div class="ma-0 text-capitalize text-lg-h6">
           {{ place.name }}
         </div>

@@ -2,7 +2,44 @@
   <div>
     <v-card tile flat>
       <v-toolbar class="align-center" height="60px" flat dense elevation="1">
-        <v-container class="navbar py-0 fill-height" style="width: 100%">
+        <div
+          style="width: 100vw"
+          class="d-flex justify-space-between align-center d-md-none"
+        >
+          <div class="d-flex justify-center align-center">
+            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-toolbar-title>Cambo Travel</v-toolbar-title>
+          </div>
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+            <v-menu bottom left>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn icon color="rgba(64, 179, 162)" v-bind="attrs" v-on="on">
+                  <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+              </template>
+
+              <v-list>
+                <v-list-item v-for="(item, i) in items" :key="i">
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+
+            <template v-slot:extension>
+              <v-tabs align-with-title>
+                <v-tab>Tab 1</v-tab>
+                <v-tab>Tab 2</v-tab>
+                <v-tab>Tab 3</v-tab>
+              </v-tabs>
+            </template>
+          </v-btn>
+        </div>
+
+        <v-container
+          class="navbar py-0 fill-height d-none d-md-flex"
+          style="width: 100%"
+        >
           <span
             class="font-weight-bold d-md-none pr-4"
             style="cursor: pointer"
@@ -89,6 +126,12 @@ export default {
         'California',
         'Colorado',
         'Connecticut',
+      ],
+      items: [
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me' },
+        { title: 'Click Me 2' },
       ],
     }
   },

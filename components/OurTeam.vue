@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 style="color: #40b3a2" class="mt-4 d-flex justify-center">
+    <h2 style="color: #40b3a2" class="mt-4 mt-md-1 d-flex justify-center">
       Our team members
     </h2>
     <v-row class="mt-3">

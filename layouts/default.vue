@@ -28,4 +28,13 @@ export default {
 #app {
   font-family: 'Montserrat', sans-serif;
 }
+
+@media (max-width: 768px) {
+  #app {
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 14px;
+  }
+}
 </style>
