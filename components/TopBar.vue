@@ -1,13 +1,13 @@
 <template>
   <div>
-    <v-card tile flat>
+    <v-card tile flat class="d-flex">
       <v-toolbar class="align-center" height="60px" flat dense elevation="1">
         <div
           style="width: 100vw"
           class="d-flex justify-space-between align-center d-md-none"
         >
           <div class="d-flex justify-center align-center">
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click="hidden = !hidden"></v-app-bar-nav-icon>
             <v-toolbar-title>Cambo Travel</v-toolbar-title>
           </div>
           <v-btn icon>
@@ -112,6 +112,7 @@
 export default {
   data() {
     return {
+      hidden: false,
       drawer: false,
       loading: false,
       items: [],
@@ -150,6 +151,9 @@ export default {
         })
         this.loading = false
       }, 500)
+    },
+    navBar() {
+      alert('test')
     },
   },
 }

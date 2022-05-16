@@ -36,5 +36,8 @@ export default {
   h2 {
     font-size: 14px;
   }
+  a {
+    font-size: 12px;
+  }
 }
 </style>

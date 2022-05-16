@@ -1,13 +1,17 @@
 <template>
   <div>
-    <v-tabs v-model="tabs" align-with-title>
+    <v-tabs
+      v-model="tabs"
+      align-with-title
+      class="d-flex justify-center align-center"
+    >
       <v-tab href="#all"> All </v-tab>
       <v-tab href="#newest"> Newest </v-tab>
       <v-tab href="#popular"> Popular </v-tab>
       <v-tabs-slider color="yellow"></v-tabs-slider>
     </v-tabs>
 
-    <v-row class="mt-10">
+    <v-row class="mt-2">
       <v-col
         v-for="suggestion in suggestions"
         :key="suggestion._id"
@@ -16,7 +20,7 @@
         md="6"
         lg="4"
       >
-        <v-card outlined>
+        <v-card outlined height="550">
           <div class="d-flex justify-center pa-2">
             <div>
               <v-img
@@ -30,7 +34,7 @@
                   class="d-flex justify-center align-center"
                   style="height: 250px; font-size: 20px; font-weight: 700"
                 >
-                  {{suggestion.title}}
+                  {{ suggestion.title }}
                 </div>
               </v-img>
               <!-- <v-card-title class="d-flex justify-center">{{
@@ -49,12 +53,18 @@
             </div>
           </div>
 
-          <v-card-text height="140">
+          <v-card-text>
             <div class="line-clamp">
               {{ suggestion.des }}
             </div>
           </v-card-text>
-
+          <div class="ml-4">
+            <v-icon class="mr-1"> mdi-heart </v-icon>
+            <span class="subheading mr-1">{{ suggestion.like }}</span>
+            <span class="mr-1">·</span>
+            <v-icon class="mr-1"> mdi-comment-processing </v-icon>
+            <span class="subheading">{{ suggestion.comment }}</span>
+          </div>
           <YourIdea />
         </v-card>
       </v-col>
@@ -63,22 +73,22 @@
     <!-- <div class="text-center">
       <v-pagination v-model="page" :length="4" circle></v-pagination>
     </div> -->
-<div class="text-center">
-    <v-pagination
-      v-model="page"
-      :length="10"
-      :total-visible="5"
-    ></v-pagination>
-  </div>
-  </div>
-  
 
+    <div @click="pageNum" class="text-center pt-2 pt-md-4">
+      <v-pagination
+        v-model="page"
+        :length="10"
+        :total-visible="7"
+      ></v-pagination>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      tabs: 'newest',
       page: 1,
       suggestions: [
         {
@@ -91,6 +101,8 @@ export default {
           profile:
             'https://www.pikpng.com/pngl/m/297-2978816_taehyung-transparent-circle-icons-jimin-png-taehyung-cute.png',
           name: 'Vitou',
+          like: 100,
+          comment: 20,
         },
 
         {
@@ -102,15 +114,19 @@ export default {
           profile:
             'https://www.mockofun.com/wp-content/uploads/2019/12/circle-photo.jpg',
           name: 'Tevy',
+          like: 110,
+          comment: 10,
         },
         {
           _id: 3,
           image: 'https://ndm-travel.com/images/thumbnails/49448.png',
           title: 'Tatai',
-          des: ' Amazing place. Really natural, and also the people there very friendly and the food reasonable price and the boat has fixed price. ',
+          des: ' Amazing place. Really natural, and also the people there very friendly and the food reasonable price and the boat has fixed price. Best recomment! ',
           name: 'Daro',
           profile:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKXeLUu4iWlLdbXKgabEORQUq2v_w6mI_z5A&usqp=CAU',
+          like: 10,
+          comment: 2,
         },
         {
           _id: 4,
@@ -121,6 +137,8 @@ export default {
           name: 'Neary',
           profile:
             'https://www.pikpng.com/pngl/b/355-3555383_circle-profile-picture-clipart.png',
+          like: 290,
+          comment: 82,
         },
         {
           _id: 5,
@@ -131,21 +149,30 @@ export default {
           name: 'Yuthna',
           profile:
             'https://images.zapnito.com/cdn-cgi/image/metadata=copyright,fit=scale-down,format=auto,sharpen=1,quality=95/https://images.zapnito.com/users/557779/avatar/medium_I68rzl51SRu135F1WwKi_IMG_4370.JPG.png',
+          like: 32,
+          comment: 20,
         },
         {
           _id: 6,
           image:
             'https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2021/05/2c4j3en-e1625485939998.jpg',
           title: 'Koh Ta Kiev',
-          des: ' Located in Ream National Park on the eastern edge of Sihanoukville, Koh Ta Kiev is just a stone’s throw from the mainland. ',
+          des: ' Located in Ream National Park on the eastern edge of Sihanoukville, Koh Ta Kiev is just a stone’s throw from the mainland. Best recomment! ',
           name: 'Khemrith',
           profile:
             'https://www.pinpng.com/pngs/m/629-6297014_purple-aesthetic-icon-city-lights-profile-pic-aesthetic.png',
+          like: 10,
+          comment: 5,
         },
       ],
       hasSaved: false,
       model: null,
     }
+  },
+  methods: {
+    pageNum() {
+      alert(this.page)
+    },
   },
 
   // // data () {

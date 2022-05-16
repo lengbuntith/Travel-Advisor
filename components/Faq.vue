@@ -1,8 +1,8 @@
 <template>
-  <div class="pr-5 pl-5 pb-5">
+  <div class="pr-0 pr-md-5 pl-0 pl-md-5 pb-1 pb-md-5">
     <div v-for="faq in faqs" :key="faq._id">
       <center>
-        <h3 id="a1" class="mb-4 mt-8" style="">
+        <h3 id="a1" class="mb-1 mb-md-5 mt-2 mt-md-8" style="">
           {{ faq.header }}
         </h3>
       </center>
@@ -13,7 +13,7 @@
           class="pa-1"
         >
           <v-expansion-panel-header
-            class="pt-9"
+            class="pt-4 pt-md-9"
             style="color: rgba(61, 133, 198); font-weight: 700"
             >{{ item.question }}</v-expansion-panel-header
           >

@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="pointer pt-lg-10"
+    class="pointer pt-md-10"
     elevation="0"
     :to="`/place/${place.name}`"
     max-width="220"
@@ -10,7 +10,7 @@
       aspect-ratio="1"
       :src="place.image"
       class="white--text image-slide"
-      :class="`mt-${parseInt(height) - 205}`"
+      :class="`mt-${parseInt(height) - margin}`"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
       <v-card-title class="d-flex justify-space-between" style="padding: 0">
@@ -19,7 +19,7 @@
           <v-btn icon> </v-btn>
         </div>
       </v-card-title>
-      <v-card-actions style="height: 100px" class="justify-center align-end">
+      <v-card-actions class="justify-center align-center">
         <div class="ma-0 text-capitalize text-lg-h6">
           {{ place.name }}
         </div>
@@ -30,7 +30,7 @@
 
 <script>
 export default {
-  props: ['place', 'height'],
+  props: ['place', 'height', 'margin'],
   data() {
     return {
       rating: 4,

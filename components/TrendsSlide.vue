@@ -2,7 +2,7 @@
   <div class="my-10">
     <v-layout
       style="margin: 2vh 0 0 1vw"
-      class="d-flex flex-column d-md-none justify-center align-center"
+      class="d-flex flex-column d-sm-none justify-center align-center"
     >
       <h2 style="color: #40b3a2">{{ category }}</h2>
       <p class="text-justify pr-md-10 pr-sm-0">
@@ -12,7 +12,11 @@
         >
       </p>
     </v-layout>
-    <swiper class="swiper" style="height: 300px" :options="swiperOption">
+    <swiper
+      class="swiper"
+      :style="`height: ${height[1]}`"
+      :options="swiperOption"
+    >
       <swiper-slide
         v-for="(place, index) in places"
         :key="index"
@@ -21,10 +25,14 @@
         <trends-card
           :place="place"
           :height="height[parseInt(index)]"
+          :margin="margin"
         ></trends-card>
       </swiper-slide>
 
-      <v-layout style="margin: 2vh 0 0 1vw" class="d-flex flex-column">
+      <v-layout
+        style="margin: 2vh 0 0 1vw"
+        class="d-none d-sm-flex flex-column"
+      >
         <h2 style="color: #40b3a2">{{ category }}</h2>
         <p>
           Top trends places in Cambodia, nowadays. Keep place with the latest
@@ -58,7 +66,8 @@ export default {
 
   data() {
     return {
-      height: [210, 250, 210],
+      height: [180, 220, 180],
+      margin: 175,
       swiperOption: {
         slidesPerView: 2.5,
         spaceBetween: 10,
@@ -90,6 +99,28 @@ export default {
         },
       },
     }
+  },
+  //render width
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
+  methods: {
+    handleResize() {
+      if (window.innerWidth >= 960) {
+        this.margin = 205
+        this.height = [210, 250, 210]
+      } else if (window.innerWidth >= 600) {
+        this.margin = 175
+        this.height = [180, 220, 180]
+      } else if (window.innerWidth < 600) {
+        this.height = [110, 150, 110]
+        this.margin = 105
+      }
+    },
   },
 }
 </script>
