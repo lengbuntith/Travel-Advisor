@@ -1,13 +1,5 @@
 <template>
   <div>
-    perfect-place
-    <star />
+  <pagination />
   </div>
 </template>
-
-<script>
-import Star from '~/components/Star.vue'
-export default {
-  components: { Star },
-}
-</script>
