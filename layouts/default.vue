@@ -5,10 +5,14 @@
       <BottomBar />
     </div>
     <v-main>
+<<<<<<< HEAD
       <v-container class="px-5">
         <ScrolltoTop />
         <Nuxt />
       </v-container>
+=======
+      <Nuxt />
+>>>>>>> 01e94a54fa54bfa1d5b40d1101a25bdab3b9acbd
     </v-main>
     <TheFooter />
   </v-app>

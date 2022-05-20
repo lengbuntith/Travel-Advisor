@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <BaseLayout>
     <SuggestionCard />
-  </div>
+  </BaseLayout>
 </template>
 
 <script>

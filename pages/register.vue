@@ -9,7 +9,6 @@
           name="firstName"
           label="First Name"
           required
-          value="leng"
           :error-messages="errorMessages('firstName')"
           @input="resetErrorMessages('firstName')"
         ></v-text-field>
@@ -19,7 +18,6 @@
           name="lastName"
           label="Last Name"
           required
-          value="buntith"
           :error-messages="errorMessages('lastName')"
           @input="resetErrorMessages('lastName')"
         ></v-text-field>
@@ -29,7 +27,6 @@
           name="email"
           label="Email"
           required
-          value="tith@gmail.com"
           :error-messages="errorMessages('email')"
           @input="resetErrorMessages('email')"
         ></v-text-field>
@@ -39,7 +36,6 @@
           name="password"
           label="Password"
           required
-          value="12345678"
           :error-messages="errorMessages('password')"
           @input="resetErrorMessages('password')"
         ></v-text-field>
@@ -49,7 +45,6 @@
           name="confirm"
           label="Confirm Password"
           required
-          value="12345678"
           :error-messages="errorMessages('confirm')"
           @input="resetErrorMessages('confirm')"
         ></v-text-field>

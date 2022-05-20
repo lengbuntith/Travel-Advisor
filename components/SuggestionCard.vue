@@ -216,6 +216,13 @@ export default {
     },
   },
 
+  created () {
+    this.$axios.get('/item/all')
+    .then((res) => {
+      console.log(res)
+    })
+  },
+
   // // data () {
   //   return {
   //     page: 1
