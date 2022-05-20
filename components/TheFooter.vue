@@ -1,5 +1,13 @@
 <template>
   <v-footer dark padless>
+    <v-sheet
+      class="d-none d-lg-flex"
+      height="110"
+      width="100%"
+      style="background: white url(/images/footer.png); color: white"
+    >
+      a
+    </v-sheet>
     <v-card flat tile class="white--text text-center" width="100%">
       <v-card-text>
         <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>

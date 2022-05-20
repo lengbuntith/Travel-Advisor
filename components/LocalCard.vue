@@ -1,59 +1,60 @@
 <template>
-  <v-card
-    class="pointer"
-    elevation="0"
-    :to="`/place/${place.name}`"
-    max-width="300"
-    max-height="300"
-  >
-    <v-img
-      aspect-ratio="1"
-      :src="place.image"
-      class="white--text image-slide"
-      gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
-    >
-      <!-- <slot name="icon"></slot> -->
-      <v-card-title class="d-flex justify-space-between" style="padding: 0">
-        <div></div>
-        <div>
-          <v-btn icon>
-            <!-- <v-icon color="rgba(250,250,250,0.6)">mdi-heart</v-icon> -->
-          </v-btn>
-        </div>
-      </v-card-title>
-      <v-card-actions style="height: 65%" class="justify-center align-center">
-        <div class="ma-0 text-capitalize text-lg-h5">
-          {{ place.name }}
-        </div>
-        <!-- <span class="grey--text text--lighten-2 text-caption mr-2">
-          ({{ rating }})
-        </span>
-        <v-rating
-          v-model="rating"
-          background-color="white"
-          color="yellow accent-4"
-          dense
-          half-increments
-          icon-label="custom icon label text {0} of {1}"
-          size="13"
-        ></v-rating> -->
-      </v-card-actions>
-    </v-img>
-    <!-- <div style="height: 58px; overflow: hidden" class="ma-0 text-capitalize">
-      {{ place.name }}
-      <hr />
-      <i class="fal fa-map-marker-alt fa-sm"></i>
-      <span style="font-size: 10px">113 st seam reap, Cambodia</span>
-    </div> -->
-  </v-card>
+  <div>
+    <swiper class="swiper banner rounded-lg" :options="swiperOption">
+      <swiper-slide
+        class="swiper-slide"
+        v-for="(image, index) in place.image"
+        :key="index"
+        ><v-card
+          class="pointer image-slide ma-0"
+          elevation="0"
+          :to="`/place/${place.name}`"
+          max-width="221"
+          max-height="300"
+        >
+          <v-img
+            aspect-ratio="1"
+            :src="image.src"
+            gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
+            class="banner white--text ma-0"
+          >
+            <v-card-actions
+              style="height: 100%"
+              class="justify-center align-center"
+            >
+              <div class="ma-0 text-capitalize text-lg-h6">
+                {{ place.name }}
+              </div>
+            </v-card-actions>
+          </v-img>
+        </v-card>
+      </swiper-slide>
+    </swiper>
+  </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+
   props: ['place'],
   data() {
     return {
       rating: 4,
+      swiperOption: {
+        slidesPerView: 1,
+        effect: 'cards',
+        // loop: true,
+        autoplay: {
+          delay: 6000,
+          disableOnInteraction: false,
+        },
+      },
     }
   },
 }

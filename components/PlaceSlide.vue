@@ -7,11 +7,14 @@
         dark
         plain
         color="rgba(64, 179, 162)"
-        class="mb-2 pl-0"
+        class="mb-1 pl-0"
         ><h2>{{ category }}</h2>
         <i class="fas fa-caret-right fa-xl pl-1"></i>
       </v-btn>
     </div>
+    <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
+      Explore these places for a close-up look at Cambodia.
+    </h4>
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide
         v-for="(place, index) in places"

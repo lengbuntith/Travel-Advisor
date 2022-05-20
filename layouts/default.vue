@@ -6,6 +6,7 @@
     </div>
     <v-main>
       <v-container class="px-5">
+        <ScrolltoTop />
         <Nuxt />
       </v-container>
     </v-main>

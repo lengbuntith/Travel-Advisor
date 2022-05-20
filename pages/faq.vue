@@ -4,7 +4,7 @@
       <h2>Frequently Asked Questions</h2>
       <div class="ma-10">
         <v-tabs>
-          <v-tab data-target="a1">Item One</v-tab>
+          <v-tab>Item One</v-tab>
           <v-tab>Item Two</v-tab>
           <v-tab>Item Three</v-tab>
         </v-tabs>

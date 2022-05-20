@@ -1,10 +1,39 @@
 <template>
   <div>
-    <v-tabs
-      v-model="tabs"
-      align-with-title
-      class="d-flex justify-center align-center"
-    >
+    <div class="text-center">
+      <v-dialog v-model="dialog" width="500">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
+            Click Me
+          </v-btn>
+        </template>
+
+        <v-card class="pa-2 pa-md-4">
+          <form @submit.prevent="submit">
+            <v-text-field
+              v-model="input.title"
+              label="title"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="input.title"
+              label="title"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-model="input.title"
+              label="title"
+              required
+            ></v-text-field>
+            <v-btn class="mr-4" type="submit" :disabled="invalid">
+              submit
+            </v-btn>
+            <v-btn @click="clear"> clear </v-btn>
+          </form>
+        </v-card>
+      </v-dialog>
+    </div>
+    <v-tabs v-model="tabs" class="d-flex justify-center align-center">
       <v-tab href="#all"> All </v-tab>
       <v-tab href="#newest"> Newest </v-tab>
       <v-tab href="#popular"> Popular </v-tab>
@@ -54,16 +83,14 @@
           </div>
 
           <v-card-text>
-            <div class="line-clamp">
-              {{ suggestion.des }}
-            </div>
+            <div class="line-clamp">{{ suggestion.des }}</div>
           </v-card-text>
           <div class="ml-4">
-            <v-icon class="mr-1"> mdi-heart </v-icon>
-            <span class="subheading mr-1">{{ suggestion.like }}</span>
+            <v-icon class="mr-1"> mdi-thumb-up-outline </v-icon>
+            <span class="subheading mr-1">{{ suggestion.like }}K</span>
             <span class="mr-1">·</span>
             <v-icon class="mr-1"> mdi-comment-processing </v-icon>
-            <span class="subheading">{{ suggestion.comment }}</span>
+            <span class="subheading">{{ suggestion.comment }}K</span>
           </div>
           <YourIdea />
         </v-card>
@@ -75,11 +102,13 @@
     </div> -->
 
     <div @click="pageNum" class="text-center pt-2 pt-md-4">
-      <v-pagination
-        v-model="page"
-        :length="10"
-        :total-visible="7"
-      ></v-pagination>
+      <v-container class="max-width">
+        <v-pagination
+          v-model="page"
+          :length="10"
+          :total-visible="7"
+        ></v-pagination>
+      </v-container>
     </div>
   </div>
 </template>
@@ -88,6 +117,15 @@
 export default {
   data() {
     return {
+      invalid: true,
+      input: [
+        {
+          title: '',
+          message: '',
+          image: '',
+        },
+      ],
+      dialog: false,
       tabs: 'newest',
       page: 1,
       suggestions: [
@@ -172,6 +210,9 @@ export default {
   methods: {
     pageNum() {
       alert(this.page)
+    },
+    clear() {
+      this.input = ''
     },
   },
 
