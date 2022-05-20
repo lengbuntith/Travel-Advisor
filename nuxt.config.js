@@ -41,8 +41,8 @@ export default {
   modules: ['@nuxtjs/axios'],
 
   axios: {
-    // baseURL: 'https://travel-advisor-backend.vercel.app',
-    baseURL: 'http://localhost:3001',
+    // baseURL: 'http://localhost:3100',
+    baseURL: 'http://34.203.236.241',
     credentials: true,
   },
 

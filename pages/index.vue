@@ -1,39 +1,46 @@
 <template>
   <div>
-    <map-svg v-if="show" />
-    <TheBanner v-else />
-    <PlaceSlide
-      v-for="(place, index) in places"
-      :key="index"
-      :category="place.category"
-      :places="place.places"
-    ></PlaceSlide>
-    <rating-slide
-      v-for="(place, index) in topRatingPlaces"
-      :key="'toprat' + index"
-      :category="place.category"
-      :places="place.places"
-    ></rating-slide>
-    <!-- <PlaceSlide
-      v-for="(place, index) in topRatingPlaces"
-      :key="index"
-      :category="place.category"
-      :places="place.places"
-    ></PlaceSlide> -->
-    <local-slide
-      v-for="(place, index) in localPlaces"
-      :key="'local' + index"
-      :category="place.category"
-      :places="place.places"
-    ></local-slide>
-    <trends-slide
-      v-for="(place, index) in trendPlaces"
-      :key="'trend' + index"
-      :category="place.category"
-      :places="place.places"
-    ></trends-slide>
-    <hr />
-    <our-team />
+    <v-img
+      src="https://images.unsplash.com/photo-1476610182048-b716b8518aae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=959&q=80"
+      gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
+      height="100vh"
+    >
+      <BaseLayout>
+        <map-svg />
+      </BaseLayout>
+    </v-img>
+    <!-- <TheBanner v-else /> -->
+
+    <BaseLayout>
+      <PlaceSlide
+        v-for="(place, index) in places"
+        :key="index"
+        :category="place.category"
+        :places="place.places"
+      ></PlaceSlide>
+
+      <rating-slide
+        v-for="(place, index) in topRatingPlaces"
+        :key="'toprat' + index"
+        :category="place.category"
+        :places="place.places"
+      ></rating-slide>
+
+      <local-slide
+        v-for="(place, index) in localPlaces"
+        :key="'local' + index"
+        :category="place.category"
+        :places="place.places"
+      ></local-slide>
+      <trends-slide
+        v-for="(place, index) in trendPlaces"
+        :key="'trend' + index"
+        :category="place.category"
+        :places="place.places"
+      ></trends-slide>
+      <hr />
+      <our-team />
+    </BaseLayout>
   </div>
 </template>
 

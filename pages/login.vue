@@ -5,13 +5,11 @@
 
       <form id="loginForm">
         <v-text-field
-          value="tith@gmail.com"
           name="email"
           required
           label="Email"
         ></v-text-field>
         <v-text-field
-          value="12345678"
           name="password"
           required
           label="Password"
@@ -20,7 +18,7 @@
           <v-btn type="submit" width="150" elevation="0" color="primary"
             >Sign In</v-btn
           >
-          <v-btn text>Forget Password ?</v-btn>
+          <v-btn to="/forgot" text>Forget Password ?</v-btn>
         </div>
       </form>
 

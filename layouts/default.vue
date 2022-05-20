@@ -5,9 +5,7 @@
       <BottomBar />
     </div>
     <v-main>
-      <v-container class="px-5">
-        <Nuxt />
-      </v-container>
+      <Nuxt />
     </v-main>
     <TheFooter />
   </v-app>
