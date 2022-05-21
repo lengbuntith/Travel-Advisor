@@ -21,7 +21,7 @@
         :key="index"
         class="swiper-slide"
       >
-        <local-card :place="place"></local-card>
+        <LocalCardNew :place="place"></LocalCardNew>
       </swiper-slide>
       <div
         class="d-none d-sm-flex swiper-button-prev swiper-button-white"
@@ -38,12 +38,10 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
-import LocalCard from './LocalCard.vue'
 export default {
   components: {
     Swiper,
     SwiperSlide,
-    LocalCard,
   },
 
   props: ['category', 'places'],

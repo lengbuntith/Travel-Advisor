@@ -5,14 +5,8 @@
       <BottomBar />
     </div>
     <v-main>
-<<<<<<< HEAD
-      <v-container class="px-5">
-        <ScrolltoTop />
-        <Nuxt />
-      </v-container>
-=======
+      <ScrolltoTop />
       <Nuxt />
->>>>>>> 01e94a54fa54bfa1d5b40d1101a25bdab3b9acbd
     </v-main>
     <TheFooter />
   </v-app>
@@ -27,6 +21,9 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  scroll-behavior: smooth !important;
+}
 @import '~vuetify/src/components/VStepper/_variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 

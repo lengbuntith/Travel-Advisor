@@ -1,7 +1,7 @@
 <template>
   <v-card
     elevation="0"
-    class="mapdiv d-flex flex-row align-center justify-center"
+    class="mapdiv d-flex flex-row align-center"
     style="width: 100%"
     color="transparent"
   >
@@ -13,8 +13,8 @@
     </v-card>
     <div class="ml-5">
       <svg
-        width="655"
-        height="601"
+        width="500"
+        height="501"
         viewBox="0 0 655 601"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
