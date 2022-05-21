@@ -1,12 +1,16 @@
 <template>
-  <div>
-    <Viewer />
-    <Test />
-  </div>
+  <BaseLayout>
+    <Describe />
+    <DetailSlide />
+    <Comment/>
+    <Review/>
+    <Viewer/>
+  </BaseLayout>
 </template>
 
 <script>
-export default {}
+
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>
