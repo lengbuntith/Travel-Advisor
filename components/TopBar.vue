@@ -14,7 +14,9 @@
           class="d-flex justify-space-between align-center d-md-none"
         >
           <div class="d-flex justify-center align-center">
-            <v-app-bar-nav-icon @click="hidden = !hidden"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon
+              @click.stop="drawer = !drawer"
+            ></v-app-bar-nav-icon>
             <v-toolbar-title>Cambo Travel</v-toolbar-title>
           </div>
           <v-btn icon>
@@ -115,6 +117,29 @@
         </v-container>
       </v-toolbar>
     </v-card>
+
+    <!-- mobile navigation drawer -->
+    <v-navigation-drawer v-model="drawer" fixed temporary>
+      <v-list-item>
+        <v-list-item-avatar>
+          <v-img src="/images/logoTravel.png"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-content>
+          <v-list-item-title>CAMBO TRAVEL</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item v-for="(item, index) in items" :key="index" link>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
   </div>
 </template>
 
@@ -125,7 +150,6 @@ export default {
       hidden: false,
       drawer: false,
       loading: false,
-      items: [],
       search: null,
       select: null,
       states: [
