@@ -81,7 +81,8 @@ export default {
 
     loadingIndicator: {
         name: 'cube-grid',
-        color: '#3B8070',
-        background: 'white'
+        color: 'rgba(64, 179, 162)',
+        background: "rgba(34,193,195,0.4)",
+        background: "linear-gradient(0deg, rgba(34,193,195,.3) 0%, rgba(223,171,28,.2) 100%)",
     }
 }

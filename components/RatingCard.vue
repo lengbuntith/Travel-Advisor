@@ -8,7 +8,7 @@
     <v-img
       aspect-ratio="1"
       :src="place.image"
-      class="white--text"
+      class="white--text swiper-lazy"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
       <!-- <slot name="icon"></slot> -->
@@ -39,7 +39,7 @@
       </v-card-actions>
     </v-img>
     <div
-      style="height: 68px; overflow: hidden; background-color: #eee"
+      style="height: 68px; overflow: hidden; background-color: white"
       class="ma-0 text-capitalize pl-1 pr-1"
     >
       <v-rating

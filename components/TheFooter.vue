@@ -4,7 +4,7 @@
       class="d-none d-lg-flex"
       height="110"
       width="100%"
-      style="background: white url(/images/footer.png); color: white"
+      style="background: #fafafa url(/images/footer.png); color: white"
     >
       a
     </v-sheet>

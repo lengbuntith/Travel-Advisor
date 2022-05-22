@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="pointer image-slide ma-0 fade-in-image"
+    class="pointer image-slide ma-0"
     elevation="0"
     :to="`/place/${name}`"
     max-width="221"
@@ -11,6 +11,7 @@
       :src="currentImage"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
       class="banner white--text ma-0"
+      style="transition: 2 ease-in-out swiper-lazy"
     >
       <v-card-actions style="height: 100%" class="justify-center align-center">
         <div class="ma-0 text-capitalize text-lg-h6">
@@ -60,13 +61,6 @@ export default {
 <style scoped>
 .image-slide:hover {
   transform: scale(1.04);
-}
-.fade-in-image {
-  animation: fadeIn 5s;
-  -webkit-animation: fadeIn 5s;
-  -moz-animation: fadeIn 5s;
-  -o-animation: fadeIn 5s;
-  -ms-animation: fadeIn 5s;
 }
 @keyframes fadeIn {
   0% {

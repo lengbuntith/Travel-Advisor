@@ -52,20 +52,22 @@
         <v-card outlined height="550">
           <div class="d-flex justify-center pa-2">
             <div>
-              <v-img
-                gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
-                class="white--text align-end"
-                width="320"
-                height="250"
-                :src="suggestion.image"
-              >
-                <div
-                  class="d-flex justify-center align-center"
-                  style="height: 250px; font-size: 20px; font-weight: 700"
+              <v-lazy transition="fade-transition">
+                <v-img
+                  gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
+                  class="white--text align-end"
+                  width="320"
+                  height="250"
+                  :src="suggestion.image"
                 >
-                  {{ suggestion.title }}
-                </div>
-              </v-img>
+                  <div
+                    class="d-flex justify-center align-center"
+                    style="height: 250px; font-size: 20px; font-weight: 700"
+                  >
+                    {{ suggestion.title }}
+                  </div>
+                </v-img>
+              </v-lazy>
               <!-- <v-card-title class="d-flex justify-center">{{
                 suggestion.title
               }}</v-card-title> -->
@@ -216,9 +218,8 @@ export default {
     },
   },
 
-  created () {
-    this.$axios.get('/item/all')
-    .then((res) => {
+  created() {
+    this.$axios.get('/item/all').then((res) => {
       console.log(res)
     })
   },

@@ -15,7 +15,12 @@
     <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
       Pick up a city, any province in Cambodia.
     </h4>
-    <swiper class="swiper" :options="swiperOption">
+    <swiper
+      class="swiper"
+      :options="swiperOption"
+      :grabCursor="true"
+      :effect="'faded'"
+    >
       <swiper-slide
         v-for="(place, index) in places"
         :key="index"

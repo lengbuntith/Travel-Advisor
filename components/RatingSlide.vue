@@ -1,7 +1,10 @@
 <template>
   <div class="my-10">
     <div>
-      <v-sheet elevation="0" class="mb-2 pl-0 d-flex justify-center"
+      <v-sheet
+        elevation="0"
+        class="mb-2 pl-0 d-flex justify-center"
+        style="background-color: #fafafa"
         ><h2 style="color: rgba(64, 179, 162)">{{ category }}</h2>
       </v-sheet>
     </div>

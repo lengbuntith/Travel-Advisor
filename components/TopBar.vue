@@ -1,7 +1,14 @@
 <template>
   <div>
     <v-card tile flat class="d-flex">
-      <v-toolbar class="align-center" height="60px" flat dense elevation="1">
+      <v-toolbar
+        class="align-center"
+        height="60px"
+        flat
+        dense
+        elevation="1"
+        color="tranparent"
+      >
         <div
           style="width: 100vw"
           class="d-flex justify-space-between align-center d-md-none"
@@ -86,15 +93,18 @@
           ></v-autocomplete>
           <v-spacer></v-spacer>
           <TheLanguage />
-          <a href="/login" style="text-decoration: none; font-weight: 900">
+          <nuxt-link
+            to="/login"
+            style="text-decoration: none; font-weight: 900"
+          >
             <div style="margin-right: 20px">
               <i
                 class="fa-solid fa-circle-user fa-lg"
                 style="color: #40b3a2"
               ></i>
               LOGIN
-            </div></a
-          >
+            </div>
+          </nuxt-link>
           <v-btn
             color="#40b3a2"
             elevation="0"

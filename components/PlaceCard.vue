@@ -8,7 +8,7 @@
     <v-img
       aspect-ratio="1"
       :src="place.image"
-      class="white--text"
+      class="white--text swiper-lazy"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
       <!-- <slot name="icon"></slot> -->

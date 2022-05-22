@@ -1,36 +1,43 @@
 <template>
-  <div>
-    <h2 style="color: #40b3a2" class="mt-4 mt-md-1 d-flex justify-center">
-      Our team members
-    </h2>
-    <v-row class="mt-3">
-      <v-col
-        cols="6"
-        sm="6"
-        md="4"
-        lg="3"
-        xl="3"
-        v-for="member in members"
-        :key="member._id"
+  <div class="mt-16">
+    <div>
+      <v-sheet elevation="0" style="background-color: #fafafa"
+        ><h2 style="color: rgba(64, 179, 162)">Our Team</h2>
+        <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
+          Pick up a city, any province in Cambodia.
+        </h4>
+      </v-sheet>
+    </div>
+    <swiper class="swiper justify-center px-2" :options="swiperOption">
+      <swiper-slide
+        v-for="item in members"
+        :key="item._id"
+        class="swiper-slide align-center"
       >
-        <v-card class="d-flex flex-row pa-1 pa-md-2 pa-lg-4">
-          <v-avatar size="60" color="rgba(0,0,0,.05)">
-            <img src="/images/profile.png" alt="John" />
-          </v-avatar>
-          <div class="ml-1 ml-md-4 d-flex flex-column justify-center">
-            <h5>{{ member.name }}</h5>
-            <div></div>
-            <p style="font-size: 12px">I am year 4 student at ITC.</p>
-            <p style="font-size: 12px">{{ member.role }}</p>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
+        <OurTeamCard :member="item" />
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+      <!-- <div
+        class="d-none d-sm-flex swiper-button-prev swiper-button-white"
+        slot="button-prev"
+      ></div>
+      <div
+        class="d-none d-sm-flex swiper-button-next swiper-button-white"
+        slot="button-next"
+      ></div> -->
+    </swiper>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+
   data() {
     return {
       members: [
@@ -80,21 +87,55 @@ export default {
         {
           _id: 8,
           profile: '',
-          name: 'KHEONG Sokkhai',
+          name: 'KHOEUNG Sokhai',
           role: 'Front-end & Back-end',
         },
       ],
+      swiperOption: {
+        pagination: {
+          el: '.swiper-pagination',
+          dynamicBullets: true,
+        },
+        slidesPerView: 2,
+        spaceBetween: 10,
+        // pagination: {
+        //   el: '.swiper-pagination',
+        //   clickable: true,
+        // },
+        // navigation: {
+        //   nextEl: '.swiper-button-next',
+        //   prevEl: '.swiper-button-prev',
+        // },
+        breakpoints: {
+          1904: {
+            slidesPerView: 5,
+            spaceBetween: 10,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 10,
+          },
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 10,
+          },
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+          },
+        },
+      },
     }
   },
 }
 </script>
 
 <style scoped>
-@media (max-width: 600px) {
-  img {
-    height: 50px !important;
-    width: 50px !important;
-    border-radius: 50px !important;
-  }
+.swiper-pagination {
+    --swiper-pagination-color: #f2af15;
 }
 </style>

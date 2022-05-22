@@ -1,9 +1,9 @@
 <template>
-  <div class="d-none d-md-block">
-    <v-toolbar height="36px" elevation="0" color="#eee">
+  <div class="d-none d-md-block" v-if="show">
+    <v-toolbar height="36px" elevation="0" color="#eee" class="drop">
       <v-container>
         <v-tabs class="ma-0" height="35" background-color="#eee">
-          <v-tabs-slider color="yellow"></v-tabs-slider>
+          <v-tabs-slider class="mt-1" color="#fafafa"></v-tabs-slider>
           <v-tab
             to="/"
             class="text-uppercase text-decoration-none font-weight-bold"
@@ -22,19 +22,7 @@
           >
             event
           </v-tab>
-          <v-tab class="text-uppercase text-decoration-none font-weight-bold">
-          </v-tab>
         </v-tabs>
-        <!-- <nuxt-link
-          to="/suggestion"
-          class="text-uppercase mr-5 text-decoration-none font-weight-bold"
-          >suggestion</nuxt-link
-        >
-        <nuxt-link
-          to="/events"
-          class="text-uppercase mr-5 text-decoration-none font-weight-bold"
-          >events</nuxt-link
-        > -->
       </v-container>
     </v-toolbar>
   </div>
@@ -44,10 +32,51 @@
 export default {
   data() {
     return {
+      show: true,
       items: ['suggestion', 'event'],
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', () => {
+      let clientHeight = scrollY
+      if (clientHeight == 0) {
+        console.log('yes')
+        this.show = true
+      } else {
+        console.log('no')
+        this.show = false
+      }
+      // console.log('client', clientHeight)
+    })
   },
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.v-tab:hover:not(.v-tab--active) {
+  border-top: 4px solid rgba(251, 193, 46, 0.4);
+  background-color: rgba(64, 179, 162, 0.2);
+}
+.v-tab--active {
+  transition: 0.1s ease-in-out;
+  border-top: 2px solid #fbc02d;
+  background-color: rgba(64, 179, 162);
+  border-left: 2px solid rgba(251, 193, 46, 1);
+  color: white;
+}
+.drop {
+  animation: drop 0.4s forwards;
+}
+
+@keyframes drop {
+  0% {
+    transform-origin: center;
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+</style>

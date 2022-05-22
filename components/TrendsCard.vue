@@ -4,12 +4,13 @@
     elevation="0"
     :to="`/place/${place.name}`"
     max-width="220"
+    style="background-color: #fafafa"
   >
     <v-img
       :height="`${height}`"
       aspect-ratio="1"
       :src="place.image"
-      class="white--text image-slide"
+      class="white--text image-slide swiper-lazy"
       :class="`mt-${parseInt(height) - margin}`"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >

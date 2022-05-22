@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div style="background-color: #fafafa">
     <v-parallax
       src="https://images7.alphacoders.com/437/thumb-1920-437264.jpg"
-      gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
       height="450"
     >
-      <BaseLayout>
-        <map-svg />
-      </BaseLayout>
+      <div style="background-color: rgba(0,0,0,.2)">
+        <BaseLayout>
+          <map-svg />
+        </BaseLayout>
+      </div>
     </v-parallax>
     <!-- <TheBanner v-else /> -->
 
@@ -38,9 +39,13 @@
         :category="place.category"
         :places="place.places"
       ></trends-slide>
-      <hr />
-      <our-team />
     </BaseLayout>
+    <JoinUs />
+    <div class="mb-5">
+      <BaseLayout>
+        <our-team />
+      </BaseLayout>
+    </div>
   </div>
 </template>
 
@@ -50,7 +55,12 @@ import MapSvg from '~/components/MapSvg.vue'
 import RatingSlide from '~/components/RatingSlide.vue'
 import TrendsSlide from '~/components/TrendsSlide.vue'
 export default {
-  components: { RatingSlide, LocalSlide, TrendsSlide, MapSvg },
+  components: {
+    RatingSlide,
+    LocalSlide,
+    TrendsSlide,
+    MapSvg,
+  },
   name: 'Home',
   data() {
     return {
@@ -272,17 +282,9 @@ export default {
       ],
     }
   },
-
-  //render width
-  created() {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.handleResize)
-  },
   methods: {
     handleResize() {
+      console.log('called')
       if (window.innerWidth < 1281 && this.show == true) {
         this.show = false
       } else if (window.innerWidth >= 1281) {
@@ -292,3 +294,8 @@ export default {
   },
 }
 </script>
+<style >
+ .v-parallax__content {
+    padding: 0px !important;
+  }
+</style>

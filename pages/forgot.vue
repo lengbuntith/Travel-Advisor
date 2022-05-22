@@ -1,13 +1,5 @@
 <template>
-  <v-img
-    src="https://images.unsplash.com/photo-1476610182048-b716b8518aae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=959&q=80"
-    gradient="to top right, rgba(100,115,201,.33), rgba(25,32,72,.7)"
-    height="100vh"
-  >
-    <v-container class="px-5">
-      <component :is="currentComponent" />
-    </v-container>
-  </v-img>
+  <component :is="currentComponent" />
 </template>
 
 <script>
