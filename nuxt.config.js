@@ -16,6 +16,16 @@ export default {
             { hid: 'description', name: 'description', content: '' },
         ],
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+        script: [
+          {
+            src: 'https://polyfill.io/v3/polyfill.min.js?features=default',
+          },
+          //  {
+          //   src: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCe2Y_jyDxUVmERWNu4xSKtBQ_pC3omxEI&callback',
+          //   body: true,
+          //   async: true,
+          // },
+        ],
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
