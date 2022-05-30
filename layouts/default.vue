@@ -28,24 +28,28 @@ export default {
     }
   },
   //render width
-  mounted() {
-    window.addEventListener('scroll', () => {
-      let clientHeight = scrollY
-      if (clientHeight == 0) {
-        this.show = false
-      } else {
-        // console.log(
-        //   clientHeight,
-        //   document.body.offsetHeight - window.innerHeight
-        // )
-        this.show = true
-        this.percent =
-          (clientHeight * 100) /
-          (document.body.offsetHeight - window.innerHeight)
-      }
-      // console.log(this.percent)
-    })
-  },
+  // mounted() {
+  //   window.addEventListener('scroll', () => {
+  //     let clientHeight = scrollY
+  //     if (clientHeight == 0) {
+  //       this.show = false
+  //     } else {
+  // console.log(
+  //   clientHeight,
+  //   document.body.offsetHeight - window.innerHeight
+  // )
+  //   this.show = true
+  //   this.percent =
+  //     (clientHeight * 100) /
+  //     (document.body.offsetHeight - window.innerHeight)
+  // }
+  // console.log(this.percent)
+  //   })
+  // },
+
+  // beforeDestroy() {
+  //   window.removeEventListener('scroll')
+  // },
 }
 </script>
 

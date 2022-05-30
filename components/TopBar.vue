@@ -95,25 +95,47 @@
           ></v-autocomplete>
           <v-spacer></v-spacer>
           <TheLanguage />
+
+          <!-- user loggedIn -->
           <nuxt-link
-            to="/login"
+            to="/account"
             style="text-decoration: none; font-weight: 900"
+            v-if="$auth.loggedIn"
           >
             <div style="margin-right: 20px">
               <i
                 class="fa-solid fa-circle-user fa-lg"
                 style="color: #40b3a2"
               ></i>
-              LOGIN
+              My Account
             </div>
           </nuxt-link>
-          <v-btn
-            color="#40b3a2"
-            elevation="0"
-            class="text-uppercase white--text font-weight-bold"
-            to="/register"
-            >register</v-btn
-          >
+          <!-- end user loggedIn -->
+
+          <!-- Guest -->
+          <div v-else class="d-flex align-center">
+            <nuxt-link
+              to="/login"
+              style="text-decoration: none; font-weight: 900"
+            >
+              <div style="margin-right: 20px">
+                <i
+                  class="fa-solid fa-circle-user fa-lg"
+                  style="color: #40b3a2"
+                ></i>
+                LOGIN
+              </div>
+            </nuxt-link>
+
+            <v-btn
+              color="#40b3a2"
+              elevation="0"
+              class="text-uppercase white--text font-weight-bold"
+              to="/register"
+              >register</v-btn
+            >
+          </div>
+          <!-- end Guest -->
         </v-container>
       </v-toolbar>
     </v-card>

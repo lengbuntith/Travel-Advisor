@@ -18,18 +18,42 @@
           lg="6"
           class="d-flex justify-center align-center"
         >
-          <v-card flat max-width="500" width="500" class="pa-10" style="border:1px solid rgba(251,192,45,1)">
+          <v-card
+            flat
+            max-width="500"
+            width="500"
+            class="pa-10"
+            style="border: 1px solid rgba(251, 192, 45, 1)"
+          >
             <h3>Login your account</h3>
 
-            <form id="loginForm">
-              <v-text-field name="email" required label="Email"></v-text-field>
+            <form @submit.prevent="userLogin">
+              <v-text-field
+                name="email"
+                required
+                label="Email"
+                v-model="login.email"
+                :error-messages="errorMessages('email')"
+                @input="resetErrorMessages('email')"
+              ></v-text-field>
+
               <v-text-field
                 name="password"
                 required
                 label="Password"
+                v-model="login.password"
+                :error-messages="errorMessages('password')"
+                @input="resetErrorMessages('password')"
               ></v-text-field>
+
               <div class="d-flex justify-space-between">
-                <v-btn type="submit" width="150" elevation="0" color="primary"
+                <v-btn
+                  :loading="isLoading"
+                  :disabled="isLoading"
+                  type="submit"
+                  width="150"
+                  elevation="0"
+                  color="primary"
                   >Sign In</v-btn
                 >
                 <v-btn to="/forgot" text>Forget Password ?</v-btn>
@@ -47,39 +71,44 @@
 </template>
 
 <script>
-import { checkUser } from '~/utils/checkUser'
-
 export default {
-  created() {
-    if (checkUser()) {
-      this.$router.push('/account')
+  middleware: 'auth',
+  auth: 'guest',
+
+  data() {
+    return {
+      error: '',
+      isLoading: false,
+      login: {
+        email: '',
+        password: '',
+      },
     }
   },
 
-  mounted() {
-    let form = document.getElementById('loginForm')
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
+  methods: {
+    async userLogin() {
+      this.isLoading = true
+      try {
+        let response = await this.$auth.loginWith('local', { data: this.login })
+        console.log(response)
+      } catch (err) {
+        console.log(err.response.data)
+        this.error = err.response.data.error
+      }
 
-      let email = e.target.email.value
-      let password = e.target.password.value
+      this.isLoading = false
+    },
 
-      this.$axios({
-        method: 'post',
-        url: '/auth/login',
-        data: {
-          email: email,
-          password: password,
-        },
-      })
-        .then((res) => {
-          console.log(res.data)
-          this.$router.push('/account')
-        })
-        .catch((err) => {
-          console.log(err.response)
-        })
-    })
+    errorMessages(property) {
+      return this.error[property]
+    },
+
+    resetErrorMessages(property) {
+      if (this.error[property]) {
+        this.error[property] = ''
+      }
+    },
   },
 }
 </script>

@@ -1,9 +1,22 @@
 <template>
   <v-card flat class="pa-3 pl-12">
-    <form id="profileForm">
+    <form @submit.prevent="userProfile">
       <div class="d-flex justify-center">
         <v-avatar size="100">
-          <img src="/images/logoTravel.png" alt="" />
+          <v-img style="position: relative" src="/images/logoTravel.png">
+            <v-file-input
+              class="mx-auto"
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-40%, -60%);
+              "
+              prepend-icon="mdi-camera"
+              hide-input
+              @change="handlerImage"
+            ></v-file-input>
+          </v-img>
         </v-avatar>
       </div>
       <div class="d-flex mt-10">
@@ -47,16 +60,12 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.user
+      return this.$store.state.auth.user.data
     },
   },
 
-  mounted() {
-    let form = document.getElementById('profileForm')
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
-
+  methods: {
+    userProfile(e) {
       this.$axios({
         method: 'post',
         url: '/auth/user/update',
@@ -66,17 +75,19 @@ export default {
         },
       })
         .then((res) => {
-          console.log('update ', res.data.data)
-          this.$store.commit('SET_USER', res.data.data)
+          console.log('update ', res.data)
+          this.$auth.setUser(res.data)
         })
         .catch((err) => {
           this.error = err.response.data.error
           console.log(this.error)
         })
-    })
-  },
+    },
 
-  methods: {
+    handlerImage(file) {
+      console.log(file)
+    },
+
     errorMessages(property) {
       console.log(this.error)
       return this.error[property]

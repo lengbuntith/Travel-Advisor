@@ -18,14 +18,21 @@
           lg="6"
           class="d-flex justify-center align-center"
         >
-          <v-card max-width="500" width="500" class="pa-10 my-10" flat style="border:1px solid rgba(251,192,45,1)">
+          <v-card
+            max-width="500"
+            width="500"
+            class="pa-10 my-10"
+            flat
+            style="border: 1px solid rgba(251, 192, 45, 1)"
+          >
             <h3>Register an account</h3>
 
-            <form id="registerForm">
+            <form @submit.prevent="userRegister">
               <v-text-field
                 type="text"
                 name="firstName"
                 label="First Name"
+                v-model="register.firstName"
                 required
                 :error-messages="errorMessages('firstName')"
                 @input="resetErrorMessages('firstName')"
@@ -36,6 +43,7 @@
                 name="lastName"
                 label="Last Name"
                 required
+                v-model="register.lastName"
                 :error-messages="errorMessages('lastName')"
                 @input="resetErrorMessages('lastName')"
               ></v-text-field>
@@ -45,6 +53,7 @@
                 name="email"
                 label="Email"
                 required
+                v-model="register.email"
                 :error-messages="errorMessages('email')"
                 @input="resetErrorMessages('email')"
               ></v-text-field>
@@ -54,6 +63,7 @@
                 name="password"
                 label="Password"
                 required
+                v-model="register.password"
                 :error-messages="errorMessages('password')"
                 @input="resetErrorMessages('password')"
               ></v-text-field>
@@ -63,11 +73,18 @@
                 name="confirm"
                 label="Confirm Password"
                 required
-                :error-messages="errorMessages('confirm')"
-                @input="resetErrorMessages('confirm')"
+                v-model="register.confirmPassword"
+                :error-messages="errorMessages('confirmPassword')"
+                @input="resetErrorMessages('confirmPassword')"
               ></v-text-field>
 
-              <v-btn type="submit" color="primary" width="150" elevation="0"
+              <v-btn
+                :loading="isLoading"
+                :disabled="isLoading"
+                type="submit"
+                color="primary"
+                width="150"
+                elevation="0"
                 >Sign up</v-btn
               >
             </form>
@@ -79,53 +96,59 @@
 </template>
 
 <script>
-import { checkUser } from '~/utils/checkUser'
-
 export default {
+  middleware: 'auth',
+  auth: 'guest',
+
   data() {
     return {
       error: '',
+      isLoading: false,
+      register: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      },
     }
-  },
-
-  created() {
-    if (checkUser()) {
-      this.$router.push('/account')
-    }
-  },
-
-  mounted() {
-    let form = document.getElementById('registerForm')
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
-
-      let userInfo = {
-        firstName: e.target.firstName.value,
-        lastName: e.target.lastName.value,
-        email: e.target.email.value,
-        password: e.target.password.value,
-        confirmPassword: e.target.confirm.value,
-      }
-
-      this.$axios({
-        method: 'POST',
-        url: '/auth/register',
-        data: userInfo,
-      })
-        .then((res) => {
-          console.log('register success', res.data)
-        })
-        .catch((err) => {
-          let msg = err.response.data.error
-          console.log(msg)
-          this.error = msg
-        })
-    })
   },
 
   methods: {
+    async userRegister() {
+      this.isLoading = true
+
+      try {
+        const res = await this.$axios({
+          method: 'POST',
+          url: '/auth/register',
+          data: this.register,
+        })
+        if (res.data.success) {
+          this.userLogin({
+            email: this.register.email,
+            password: this.register.password,
+          })
+        }
+      } catch (error) {
+        let msg = error.response.data.error
+        console.log(msg)
+        this.error = msg
+      }
+
+      this.isLoading = false
+    },
+
+    async userLogin(login) {
+      try {
+        let response = await this.$auth.loginWith('local', { data: login })
+        console.log(response)
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
     errorMessages(property) {
-      console.log(this.error)
       return this.error[property]
     },
 
