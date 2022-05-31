@@ -51,8 +51,8 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-leaflet'],
 
   axios: {
-    baseURL: 'http://localhost:3001', //offline
-    //baseURL: 'https://movieez.ml', //online
+    // baseURL: 'http://localhost:3001', //offline
+    baseURL: 'https://movieez.ml', //online
     credentials: true,
   },
 
