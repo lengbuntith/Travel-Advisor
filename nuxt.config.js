@@ -48,7 +48,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-leaflet'],
 
   axios: {
     baseURL: 'http://localhost:3001', //offline

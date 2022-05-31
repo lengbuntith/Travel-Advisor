@@ -2,7 +2,7 @@
   <v-card
     class="pointer image-slide ma-0"
     elevation="0"
-    :to="`/place/${name}`"
+    :to="`/attractive place/${name}`"
     max-width="221"
     max-height="300"
   >
