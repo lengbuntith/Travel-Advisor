@@ -53,8 +53,8 @@
               <h3>Support Links</h3>
               <ul>
                 <li><nuxt-link to="/FAQ">FAQ</nuxt-link></li>
-                <li><nuxt-link to="/FAQ">Help</nuxt-link></li>
-                <li><nuxt-link to="/FAQ">Terms & Conditions</nuxt-link></li>
+                <li><nuxt-link to="/privacypolicy">Privacy & Policy</nuxt-link></li>
+                <li><nuxt-link to="/term">Terms & Conditions</nuxt-link></li>
               </ul>
             </div>
           </v-col>
