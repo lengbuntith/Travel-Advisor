@@ -44,6 +44,10 @@
                 v-model="login.password"
                 :error-messages="errorMessages('password')"
                 @input="resetErrorMessages('password')"
+                counter
+                :type="showPassword ? 'text' : 'password'"
+                :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                @click:append="showPassword = !showPassword"
               ></v-text-field>
 
               <div class="d-flex justify-space-between">
@@ -79,6 +83,7 @@ export default {
     return {
       error: '',
       isLoading: false,
+      showPassword: false,
       login: {
         email: '',
         password: '',
@@ -88,6 +93,7 @@ export default {
 
   methods: {
     async userLogin() {
+      document.cookie = 'access_token=;expires=Thu, 01 Jan 1970 00:00:00 GMT'
       this.isLoading = true
       try {
         let response = await this.$auth.loginWith('local', { data: this.login })

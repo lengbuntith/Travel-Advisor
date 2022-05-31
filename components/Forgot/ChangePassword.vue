@@ -7,11 +7,15 @@
     class="mx-auto pa-4 mt-16"
   >
     <div v-if="!showSuccess">
-      <h2 class="mb-2 white--text font-weight-bold">Change new password</h2>
-      <p class="white--text">Enter new password you want to change</p>
+      <h2 class="mb-2 font-weight-bold">Change new password</h2>
+      <p class="">Enter new password you want to change</p>
 
       <form @submit="changePassword">
         <v-text-field
+          counter
+          :type="showPassword ? 'text' : 'password'"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showPassword = !showPassword"
           name="password"
           placeholder="Enter new password"
           solo
@@ -25,6 +29,10 @@
         >
 
         <v-text-field
+          counter
+          :type="showPassword ? 'text' : 'password'"
+          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+          @click:append="showPassword = !showPassword"
           name="confirmPassword"
           placeholder="Confirm password"
           solo
@@ -78,6 +86,7 @@ export default {
     return {
       errorMessage: '',
       showSuccess: false,
+      showPassword: false,
     }
   },
 

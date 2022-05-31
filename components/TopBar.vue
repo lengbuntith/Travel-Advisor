@@ -94,7 +94,7 @@
             solo
           ></v-autocomplete>
           <v-spacer></v-spacer>
-          <TheLanguage />
+          <!-- <TheLanguage /> -->
 
           <!-- user loggedIn -->
           <nuxt-link
@@ -103,10 +103,12 @@
             v-if="$auth.loggedIn"
           >
             <div style="margin-right: 20px">
-              <i
-                class="fa-solid fa-circle-user fa-lg"
-                style="color: #40b3a2"
-              ></i>
+              <v-avatar class="mr-1" v-if="$auth.user.data.imageUrl" size="35">
+                <v-img :src="$auth.user.data.imageUrl"></v-img>
+              </v-avatar>
+              <v-icon v-else size="30" color="primary"
+                >mdi-account-circle</v-icon
+              >
               My Account
             </div>
           </nuxt-link>

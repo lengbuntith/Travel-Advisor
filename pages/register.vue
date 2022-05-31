@@ -59,23 +59,29 @@
               ></v-text-field>
 
               <v-text-field
-                type="password"
                 name="password"
                 label="Password"
                 required
                 v-model="register.password"
                 :error-messages="errorMessages('password')"
                 @input="resetErrorMessages('password')"
+                counter
+                :type="showPassword ? 'text' : 'password'"
+                :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                @click:append="showPassword = !showPassword"
               ></v-text-field>
 
               <v-text-field
-                type="password"
                 name="confirm"
                 label="Confirm Password"
                 required
                 v-model="register.confirmPassword"
                 :error-messages="errorMessages('confirmPassword')"
                 @input="resetErrorMessages('confirmPassword')"
+                counter
+                :type="showPassword ? 'text' : 'password'"
+                :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                @click:append="showPassword = !showPassword"
               ></v-text-field>
 
               <v-btn
@@ -104,6 +110,7 @@ export default {
     return {
       error: '',
       isLoading: false,
+      showPassword: false,
       register: {
         firstName: '',
         lastName: '',

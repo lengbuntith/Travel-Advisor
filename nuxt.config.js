@@ -51,8 +51,8 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
 
   axios: {
-    baseURL: 'http://localhost:3001', //offline
-    //baseURL: 'https://movieez.ml', //online
+    //baseURL: 'http://localhost:3001', //offline
+    baseURL: 'https://movieez.ml', //online
     credentials: true,
   },
 
@@ -61,9 +61,9 @@ export default {
       local: {
         token: {
           required: true,
-          type: 'Bearer',
           maxAge: 86400, //in second
           autoLogout: true,
+          type: false,
         },
 
         user: {

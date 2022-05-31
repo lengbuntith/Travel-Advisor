@@ -7,6 +7,11 @@ import GetLinkForm from '~/components/Forgot/GetLinkForm.vue'
 import ChangePassword from '~/components/Forgot/ChangePassword.vue'
 import ExpiredToken from '~/components/Forgot/ExpiredToken.vue'
 export default {
+  name: 'forgot',
+  
+  middleware: 'auth',
+  auth: 'guest',
+
   components: {
     GetLinkForm,
     ChangePassword,
