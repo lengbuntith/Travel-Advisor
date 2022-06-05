@@ -6,8 +6,8 @@
       :options="swiperOptionTop"
       ref="swiperTop"
     >
-      <swiper-slide class="slide" v-for="image in images" :key="image._id">
-        <img :src="image.src" />
+      <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
+        <img :src="image" />
       </swiper-slide>
       <div
         class="swiper-button-next swiper-button-white"
@@ -24,8 +24,8 @@
       :options="swiperOptionThumbs"
       ref="swiperThumbs"
     >
-      <swiper-slide class="slide" v-for="image in images" :key="image._id">
-        <img :src="image.src" />
+       <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
+        <img :src="image" />
       </swiper-slide>
     </swiper>
   </div>
@@ -36,30 +36,15 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 
 export default {
+    props: ['images'],
   components: {
     Swiper,
     SwiperSlide,
   },
   data() {
+    
     return {
-      images: [
-        {
-          _id: 1,
-          src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg',
-        },
-        {
-          _id: 2,
-          src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg',
-        },
-        {
-          _id: 3,
-          src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg',
-        },
-        {
-          _id: 4,
-          src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Ankor_Wat_temple.jpg/1200px-Ankor_Wat_temple.jpg',
-        },
-      ],
+      
       swiperOptionTop: {
         loop: true,
         loopedSlides: 5, // looped slides should be the same
