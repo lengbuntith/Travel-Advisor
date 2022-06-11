@@ -31,8 +31,16 @@
               </div>
             </div>
             <div>
-              <v-btn icon>
-                <v-icon>mdi-thumb-up-outline</v-icon>
+          
+        <v-btn icon>
+             <v-btn
+              icon
+              color="teaf"
+              @click="dialog = false"
+            >
+              <v-icon>mdi-thumb-up</v-icon>
+            </v-btn>
+                </v-btn>
                 <v-menu bottom left>
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn
@@ -52,14 +60,14 @@
                   </v-list>
                 </v-menu>
 
-                <template v-slot:extension>
+                <!-- <template v-slot:extension >
                   <v-tabs align-with-title>
                     <v-tab>Tab 1</v-tab>
                     <v-tab>Tab 2</v-tab>
                     <v-tab>Tab 3</v-tab>
                   </v-tabs>
-                </template>
-              </v-btn>
+                </template> -->
+           
             </div>
           </div>
 
@@ -79,10 +87,9 @@ export default {
   data() {
     return {
       items: [
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me 2' },
+        { title: 'EDIT' },
+        { title: 'DELETE' },
+        { title: 'CANCEL' },
       ],
       page: 1,
       comments: [
