@@ -93,7 +93,6 @@ export default {
 
   methods: {
     async userLogin() {
-      document.cookie = 'access_token=;expires=Thu, 01 Jan 1970 00:00:00 GMT'
       this.isLoading = true
       try {
         let response = await this.$auth.loginWith('local', { data: this.login })
