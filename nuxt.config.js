@@ -16,8 +16,7 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [
-    ],
+    script: [],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -43,8 +42,8 @@ export default {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', 'nuxt-leaflet'],
 
   axios: {
-    // baseURL: 'http://localhost:3001', //offline
-    baseURL: 'https://movieez.ml', //online
+    baseURL: 'http://localhost:3001', //offline
+    //baseURL: 'https://movieez.ml', //online
     credentials: true,
   },
 
