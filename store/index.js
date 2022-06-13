@@ -8,4 +8,10 @@ export const mutations = {
   },
 }
 
-export const actions = {}
+export const actions = {
+  addToSaved(context, place_id) {
+    this.$axios.post('/saved/add', {
+      place_id: place_id,
+    })
+  },
+}
