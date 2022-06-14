@@ -2,12 +2,12 @@
   <v-card
     class="pointer image-slide"
     elevation="0"
-    :to="`/place/${place.name}`"
+    :to="`/place/${place._id}`"
     max-width="300"
   >
     <v-img
       aspect-ratio="1"
-      :src="place.image"
+      :src="place.thumbnail"
       class="white--text swiper-lazy"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
@@ -22,7 +22,7 @@
       </v-card-title>
       <v-card-actions style="height: 65%" class="justify-center align-center">
         <div class="ma-0 text-capitalize text-lg-h6">
-          {{ place.name }}
+          {{ place.title }}
         </div>
         <!-- <span class="grey--text text--lighten-2 text-caption mr-2">
           ({{ rating }})

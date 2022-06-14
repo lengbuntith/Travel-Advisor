@@ -1,16 +1,12 @@
 <template>
   <div class="my-10">
     <div>
-      <v-btn
-        to="/perfect-places"
-        elevation="0"
-        dark
+      <v-sheet
         plain
-        color="rgba(64, 179, 162)"
+        style="color: rgba(64, 179, 162, 0.7); background-color: #fafafa"
         class="mb-1 pl-0"
-        ><h2>{{ category }}</h2>
-        <i class="fas fa-caret-right fa-xl pl-1"></i>
-      </v-btn>
+        ><h2>Local Attractive Places</h2>
+      </v-sheet>
     </div>
     <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
       Pick up a city, any province in Cambodia.
@@ -22,8 +18,8 @@
       :effect="'faded'"
     >
       <swiper-slide
-        v-for="(place, index) in places"
-        :key="index"
+        v-for="place in places"
+        :key="place._id"
         class="swiper-slide"
       >
         <LocalCardNew :place="place"></LocalCardNew>
@@ -49,7 +45,7 @@ export default {
     SwiperSlide,
   },
 
-  props: ['category', 'places'],
+  props: ['places'],
 
   data() {
     return {

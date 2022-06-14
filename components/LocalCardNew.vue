@@ -2,7 +2,7 @@
   <v-card
     class="pointer image-slide ma-0"
     elevation="0"
-    :to="`/attractive place/${name}`"
+    :to="`/attractive place/${place._id}`"
     max-width="221"
     max-height="300"
   >
@@ -39,18 +39,23 @@ export default {
   watch: {
     place: {
       handler(place) {
-        this.images = place.image
+        this.images = place.thumbnail
         this.name = place.name
 
-        this.currentImage = place.image[0].src
-        this.totalIndex = place.image.length - 1
+        // console.log(place.thumbnail[0])
+        console.log(this.thumbnail)
+
+        // this.currentImage = place.images[0]
+        this.currentImage = place.thumbnail[0]
+        // this.totalIndex = place.images.length - 1
+        this.totalIndex = place.thumbnail.length - 1
 
         setInterval(() => {
           if (this.currentIndex == this.totalIndex) {
             this.currentIndex = -1
           }
 
-          this.currentImage = place.image[++this.currentIndex].src
+          this.currentImage = place.thumbnail[++this.currentIndex]
         }, 6000)
       },
       immediate: true,

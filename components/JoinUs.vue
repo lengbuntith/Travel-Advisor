@@ -1,13 +1,16 @@
 <template>
-  <div>
+  <div v-show="this.$auth.loggedIn">
     <v-img height="200px" src="/images/background.png">
       <v-sheet
         height="200"
-        style="background-color: rgba(64, 179, 162,.8)"
+        style="background-color: rgba(64, 179, 162, 0.8)"
         class="white--text"
       >
         <div>
-          <BaseLayout style="height: 200px" class="d-flex align-center justify-space-around">
+          <BaseLayout
+            style="height: 200px"
+            class="d-flex align-center justify-space-around"
+          >
             <div>
               <h2>Join Our Community</h2>
               <div>

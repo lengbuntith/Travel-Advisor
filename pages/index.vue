@@ -4,7 +4,7 @@
       src="https://images7.alphacoders.com/437/thumb-1920-437264.jpg"
       height="450"
     >
-      <div style="background-color: rgba(0,0,0,.2)">
+      <div style="background-color: rgba(0, 0, 0, 0.2)">
         <BaseLayout>
           <map-svg />
         </BaseLayout>
@@ -13,26 +13,9 @@
     <!-- <TheBanner v-else /> -->
 
     <BaseLayout>
-      <PlaceSlide
-        v-for="(place, index) in places"
-        :key="index"
-        :category="place.category"
-        :places="place.places"
-      ></PlaceSlide>
-
-      <rating-slide
-        v-for="(place, index) in topRatingPlaces"
-        :key="'toprat' + index"
-        :category="place.category"
-        :places="place.places"
-      ></rating-slide>
-
-      <local-slide
-        v-for="(place, index) in localPlaces"
-        :key="'local' + index"
-        :category="place.category"
-        :places="place.places"
-      ></local-slide>
+      <PlaceSlide :places="places"></PlaceSlide>
+      <rating-slide :places="popularPlaces"></rating-slide>
+      <local-slide :places="localPlaces"></local-slide>
       <trends-slide
         v-for="(place, index) in trendPlaces"
         :key="'trend' + index"
@@ -66,223 +49,44 @@ export default {
     return {
       show: true,
       windowWidth: window.innerWidth,
-      places: [
-        {
-          category: 'Perfect Places',
-          places: [
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1602604193553-28c132dac0a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1552445093-6e48162efaea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1551432434-d5f2bdc62ce9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1552445093-6e48162efaea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1551432434-d5f2bdc62ce9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjN8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-          ],
-        },
-      ],
-      topRatingPlaces: [
-        {
-          category: 'Top Rating Places',
-          places: [
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1602604193553-28c132dac0a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Angkor Wat',
-              image:
-                'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-            },
-          ],
-        },
-      ],
-      localPlaces: [
-        {
-          category: 'Local Actractive Places',
-          places: [
-            {
-              name: 'Phnom Penh',
-              image: [
-                {
-                  src: 'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-                },
-              ],
-            },
-
-            {
-              name: 'Seam Reap',
-              image: [
-                {
-                  src: 'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-                },
-              ],
-            },
-
-            {
-              name: 'Kep',
-              image: [
-                {
-                  src: 'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-                },
-              ],
-            },
-
-            {
-              name: 'Kom Pot',
-              image: [
-                {
-                  src: 'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-                },
-              ],
-            },
-
-            {
-              name: 'Sihanouk Ville',
-              image: [
-                {
-                  src: 'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-                },
-              ],
-            },
-            {
-              name: 'Koh Kong',
-              image: [
-                {
-                  src: 'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-                },
-                {
-                  src: 'https://images.unsplash.com/photo-1569668723493-80d82b05bad7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFuZ2tvciUyMHdhdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-                },
-              ],
-            },
-          ],
-        },
-      ],
+      places: [],
+      popularPlaces: [],
+      localPlaces: [],
       trendPlaces: [
         {
           category: 'Latest Trend Places',
-          places: [
-            {
-              name: 'Phnom Penh',
-              image:
-                'https://images.unsplash.com/photo-1606231140504-b6ec6cbbbf6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Seam Reap',
-              image:
-                'https://images.unsplash.com/photo-1571844088753-73ca0880bcd9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-
-            {
-              name: 'Kep',
-              image:
-                'https://images.unsplash.com/photo-1602604193553-28c132dac0a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YW5na29yJTIwd2F0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-            },
-          ],
+          places: [],
         },
       ],
     }
   },
   methods: {
+    //get all places
+    getPlace() {
+      this.$axios.get('place/all?item_per_page=200').then((res) => {
+        // console.log(res.data.data.docs)
+        this.places = res.data.data.docs
+        console.log(this.places)
+      })
+    },
+    //get popular place
+    getPopular() {
+      this.$axios
+        .get(
+          '/place/all?item_per_page=200&most_comment=true&select=story,averageRating,city'
+        )
+        .then((res) => {
+          // console.log(res.data.data.docs)
+          this.popularPlaces = res.data.data.docs
+        })
+    },
+    //get popular place
+    getLocalPlace() {
+      this.$axios.get('/city/all').then((res) => {
+        // console.log(res.data.data.docs)
+        this.localPlaces = res.data.data
+      })
+    },
     handleResize() {
       console.log('called')
       if (window.innerWidth < 1281 && this.show == true) {
@@ -292,10 +96,15 @@ export default {
       }
     },
   },
+  created() {
+    this.getPlace()
+    this.getPopular()
+    this.getLocalPlace()
+  },
 }
 </script>
-<style >
- .v-parallax__content {
-    padding: 0px !important;
-  }
+<style>
+.v-parallax__content {
+  padding: 0px !important;
+}
 </style>

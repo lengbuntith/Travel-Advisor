@@ -8,7 +8,7 @@
         plain
         color="rgba(64, 179, 162)"
         class="mb-1 pl-0"
-        ><h2>{{ category }}</h2>
+        ><h2>All places</h2>
         <i class="fas fa-caret-right fa-xl pl-1"></i>
       </v-btn>
     </div>
@@ -17,8 +17,8 @@
     </h4>
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide
-        v-for="(place, index) in places"
-        :key="index"
+        v-for="place in places"
+        :key="place._id"
         class="swiper-slide"
       >
         <PlaceCard :place="place"></PlaceCard>
@@ -44,7 +44,7 @@ export default {
     SwiperSlide,
   },
 
-  props: ['category', 'places'],
+  props: ['places'],
 
   data() {
     return {

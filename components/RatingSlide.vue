@@ -2,16 +2,19 @@
   <div class="my-10">
     <div>
       <v-sheet
-        elevation="0"
-        class="mb-2 pl-0 d-flex justify-center"
-        style="background-color: #fafafa"
-        ><h2 style="color: rgba(64, 179, 162)">{{ category }}</h2>
+        plain
+        style="color: rgba(64, 179, 162, 0.7); background-color: #fafafa"
+        class="mb-1 pl-0"
+        ><h2>Top Popular places</h2>
       </v-sheet>
+      <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
+        Most review and comment places.
+      </h4>
     </div>
     <swiper class="swiper justify-center" :options="swiperOption">
       <swiper-slide
-        v-for="(place, index) in places"
-        :key="index"
+        v-for="place in places"
+        :key="place._id"
         class="swiper-slide align-center"
       >
         <rating-card :place="place"></rating-card>
@@ -37,7 +40,7 @@ export default {
     SwiperSlide,
   },
 
-  props: ['category', 'places'],
+  props: ['places'],
 
   data() {
     return {

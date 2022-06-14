@@ -1,17 +1,9 @@
 <template>
   <v-container>
-    <v-btn @click="createItem">create new item</v-btn>
-
-    <ul>
-      <li v-for="city in allCities" :key="city._id">
-        {{ city.name }}
-      </li>
-    </ul>
-
     <v-row>
       <v-col
-        v-for="product in allProducts"
-        :key="product._id"
+        v-for="place in allPlaces"
+        :key="place._id"
         cols="12"
         xs="12"
         sm="6"
@@ -19,28 +11,35 @@
         lg="3"
         xl="2"
       >
-        <v-card class="pa-2" outlined tile>
+        <v-card class="pa-2" outlined tile :to="`place/${place._id}`">
           <template>
             <v-card class="mx-auto" max-width="344">
-              <v-img :src="product.thumbnail" height="200px"></v-img>
+              <v-img :src="place.thumbnail" height="200px"></v-img>
 
-              <v-card-title> {{ product.title }} </v-card-title>
+              <v-card-title> {{ place.title }} </v-card-title>
 
-              <v-card-subtitle align="left" class="d-flex align-center">
-                Rating:
-                <v-rating
-                  v-model="rating"
-                  size="15"
-                  readonly
-                  half-increments
-                  icon-label="custom icon label text {0} of {1}"
-                ></v-rating>
+              <v-card-subtitle align="left">
+                <div class="d-flex align-center">
+                  Rating:
+                  <v-rating
+                    v-model="place.averageRating"
+                    size="14"
+                    color="teal"
+                    readonly
+                    dense
+                    class="ml-1"
+                    icon-label="custom icon label text {0} of {1}"
+                  ></v-rating>
+                </div>
+                <div>{{ place.totalComment }} reviews</div>
               </v-card-subtitle>
 
-              <p class="text-justify pa-2 line-clamp">
-                {{ product.description }}
+              <p class="text-justify px-2 line-clamp">
+                {{ place.story }}
               </p>
-              <nuxt-link :to="product._id"> View detail </nuxt-link>
+              <nuxt-link style="text-decoration: none" :to="place._id">
+                View detail
+              </nuxt-link>
             </v-card>
           </template></v-card
         ></v-col
@@ -51,62 +50,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      rating: 3.5,
-      allProducts: [],
-      allCities: [],
-      title: 'Angkor Thom',
-    }
-  },
-
-  created() {
-    this.getItems()
-  },
-
-  methods: {
-    getItems() {
-      //get data from api
-      this.$axios.get('/item/all').then((res) => {
-        console.log('get item', res.data.data)
-        this.allProducts = res.data.data
-
-        this.getCity()
-      })
-    },
-
-    getCity() {
-      this.$axios
-        .get('/city/all')
-        .then((res) => {
-          console.log('get city', res.data)
-          this.allCities = res.data.data
-        })
-        .catch((err) => {
-          console.log('get city error', err)
-        })
-    },
-
-    createItem() {
-      this.$axios
-        .post('/item/create', {
-          title: this.title,
-          thumbnail:
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1652760012/fdch8o2yrgpphbmbtaf7.jpg',
-          images: [
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1652760012/fdch8o2yrgpphbmbtaf7.jpg',
-          ],
-          description:
-            'angkor wat is temple in siem reap city part of cambodia',
-        })
-        .then((res) => {
-          console.log('create item', res.data)
-        })
-        .catch((err) => {
-          console.log('create item', err)
-        })
-    },
-  },
+  props: ['allPlaces'],
 }
 </script>
 

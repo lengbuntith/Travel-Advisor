@@ -2,12 +2,12 @@
   <v-card
     class="pointer image-slide"
     elevation="0"
-    :to="`/place/${place.name}`"
+    :to="`/place/${place._id}`"
     max-width="300"
   >
     <v-img
       aspect-ratio="1"
-      :src="place.image"
+      :src="place.thumbnail"
       class="white--text swiper-lazy"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
@@ -22,7 +22,7 @@
       </v-card-title>
       <v-card-actions style="height: 65%" class="justify-center align-center">
         <div class="ma-0 text-capitalize text-lg-h5">
-          {{ place.name }}
+          {{ place.title }}
         </div>
         <!-- <span class="grey--text text--lighten-2 text-caption mr-2">
           ({{ rating }})
@@ -43,7 +43,7 @@
       class="ma-0 text-capitalize pl-1 pr-1"
     >
       <v-rating
-        v-model="rating"
+        v-model="place.averageRating"
         background-color="black"
         color="rgba(62,179,162,1)"
         dense
@@ -51,9 +51,15 @@
         icon-label="custom icon label text {0} of {1}"
         size="13"
       ></v-rating>
-      <div style="font-size: 10px" class="d-flex justify-space-between">
-        <div>Located: Seam Reap</div>
-        <div><i class="fa-light fa-comment"></i> 230 Reviews</div>
+      <div
+        style="font-size: 10px"
+        class="d-flex justify-space-between"
+        v-if="place.city"
+      >
+        <div>Located: {{ place.city.name }}</div>
+        <div>
+          <i class="fa-light fa-comment"></i> {{ place.totalComment }} Reviews
+        </div>
       </div>
       <hr />
       <i class="fal fa-map-marker-alt fa-sm"></i>
@@ -66,9 +72,7 @@
 export default {
   props: ['place'],
   data() {
-    return {
-      rating: 4,
-    }
+    return {}
   },
 }
 </script>
