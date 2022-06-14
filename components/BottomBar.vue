@@ -11,13 +11,13 @@
             home
           </v-tab>
           <v-tab
-            to="/suggestion"
+            to="/suggestion?page=1&sort=-1"
             class="text-uppercase text-decoration-none font-weight-bold"
           >
             suggestion
           </v-tab>
           <v-tab
-            to="/event"
+            to="/event?page=1&sort=-1"
             class="text-uppercase text-decoration-none font-weight-bold"
           >
             event
@@ -80,3 +80,4 @@ export default {
   }
 }
 </style>
+git
