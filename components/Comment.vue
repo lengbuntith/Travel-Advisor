@@ -83,7 +83,7 @@ export default {
     checkUserOwnComment(userId) {
       let status = false
       let user_id = ''
-      if (this.$auth.loggedIn) this.$auth.user.data._id
+      if (this.$auth.loggedIn) user_id = this.$auth.user.data._id
       if (userId == user_id) status = true
       return status
     },

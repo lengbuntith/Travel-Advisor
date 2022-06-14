@@ -6,7 +6,7 @@
       :options="swiperOptionTop"
       ref="swiperTop"
     >
-      <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
+      <swiper-slide class="slide" v-for="image in images" :key="image._id">
         <img :src="image" />
       </swiper-slide>
       <div
@@ -24,7 +24,7 @@
       :options="swiperOptionThumbs"
       ref="swiperThumbs"
     >
-       <swiper-slide class="slide" v-for="(image, index) in images" :key="index">
+      <swiper-slide class="slide" v-for="image in images" :key="image._id">
         <img :src="image" />
       </swiper-slide>
     </swiper>
@@ -36,15 +36,13 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 
 export default {
-    props: ['images'],
+  props: ['images'],
   components: {
     Swiper,
     SwiperSlide,
   },
   data() {
-    
     return {
-      
       swiperOptionTop: {
         loop: true,
         loopedSlides: 5, // looped slides should be the same
