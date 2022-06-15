@@ -1,5 +1,5 @@
 <template>
-  <div v-show="this.$auth.loggedIn">
+  <div>
     <v-img height="200px" src="/images/background.png">
       <v-sheet
         height="200"

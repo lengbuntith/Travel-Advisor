@@ -40,10 +40,8 @@ export default {
     window.addEventListener('scroll', () => {
       let clientHeight = scrollY
       if (clientHeight == 0) {
-        console.log('yes')
         this.show = true
       } else {
-        console.log('no')
         this.show = false
       }
       // console.log('client', clientHeight)
@@ -80,4 +78,3 @@ export default {
   }
 }
 </style>
-git

@@ -4,7 +4,7 @@
       <v-sheet elevation="0" style="background-color: #fafafa"
         ><h2 style="color: rgba(64, 179, 162)">Our Team</h2>
         <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
-          Pick up a city, any province in Cambodia.
+          Welcome to our amazing teams! United as one.
         </h4>
       </v-sheet>
     </div>
@@ -45,50 +45,67 @@ export default {
           _id: 1,
           profile: '',
           name: 'PHAL SreyKhouch',
-          role: 'Front-end',
+          role: 'Developer',
+          message:
+            'Always look for how much progress can be made rather than perfection. Life will be a lot easier.',
         },
         {
           _id: 2,
           profile: '',
           name: 'KONG Sopheap',
-          role: 'Front-end',
+          role: 'Developer',
+          message:
+            'Do not give up no matter what, always try just one more time, and eventually you will be successful.',
         },
         {
           _id: 3,
-          profile: '',
+          profile:
+            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655223719/ablizkrsfjif7ikdqvzu.jpg',
           name: 'LY Chanthorn',
-          role: 'Front-end',
+          role: 'Developer',
+          message:
+            'Nothing can stop you from reaching your goals as long as you work hard. Your goals are simply dedication and determination away.',
         },
         {
           _id: 4,
           profile: '',
           name: 'LENG Butith',
-          role: 'Front-end & Back-end',
+          role: 'Developer',
+          message:
+            'As a student the most important thing to remember is that laziness is your worst enemy and hard work is your best friend.',
         },
         {
           _id: 5,
           profile: '',
           name: 'OURN Dalin',
-          role: 'Front-end & Report',
+          role: 'Developer',
+          message:
+            'Succeeding in life is easy as long as you believe in yourself. Trust yourself, and success will come along.',
         },
         {
           _id: 6,
           profile: '',
 
           name: 'KHENG Piseth',
-          role: 'Front-end',
+          role: 'Developer',
+          message:
+            'Try to learn from every little thing, and no one would be wiser than you. Help yourself; others will come forward to help you as well. Best wishes.',
         },
         {
           _id: 7,
           profile: '',
           name: 'KOENG Gana',
-          role: 'Front-end',
+          role: 'Developer',
+          message:
+            'Your future journey will be designed based on the path you choose at present. Best wishes for a successful and flourishing future!',
         },
         {
           _id: 8,
           profile: '',
           name: 'KHOEUNG Sokhai',
-          role: 'Front-end & Back-end',
+          role: 'Developer',
+          message:
+            'Success is not something easily achieved. So, work hard for it and later on enjoy the rewards. Always remember giving up is a weakness. All the best.',
         },
       ],
       swiperOption: {
@@ -136,6 +153,6 @@ export default {
 
 <style scoped>
 .swiper-pagination {
-    --swiper-pagination-color: #f2af15;
+  --swiper-pagination-color: #f2af15;
 }
 </style>

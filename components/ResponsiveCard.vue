@@ -13,11 +13,19 @@
       >
         <v-card class="pa-2" outlined tile :to="`place/${place._id}`">
           <template>
-            <v-card class="mx-auto" max-width="344">
-              <v-img :src="place.thumbnail" height="200px"></v-img>
-
-              <v-card-title> {{ place.title }} </v-card-title>
-
+            <div class="mx-auto" max-width="344">
+              <v-img
+                gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
+                :src="place.thumbnail"
+                height="200px"
+              >
+                <v-card-title
+                  style="height: 100%; width: 100%; font-weight: 700"
+                  class="d-flex justify-center align-center white--text"
+                >
+                  {{ place.title }}
+                </v-card-title>
+              </v-img>
               <v-card-subtitle align="left">
                 <div class="d-flex align-center">
                   Rating:
@@ -40,7 +48,7 @@
               <nuxt-link style="text-decoration: none" :to="place._id">
                 View detail
               </nuxt-link>
-            </v-card>
+            </div>
           </template></v-card
         ></v-col
       ></v-row

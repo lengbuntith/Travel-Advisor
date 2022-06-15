@@ -78,18 +78,20 @@
             append-icon=""
             v-model="select"
             :loading="loading"
-            :items="items"
+            :item-text="'title'"
+            :items="places"
             :search-input.sync="search"
+            @change="placeData"
             cache-items
+            return-object
             class="mx-4"
             flat
-            hide-no-data
             hide-details
             label="Which places are you want to visit?"
             solo-inverted
             clearable
             dense
-            no-data-text=""
+            no-data-text="No data"
             color="teal lighten-2"
             solo
           ></v-autocomplete>
@@ -176,43 +178,38 @@ export default {
       loading: false,
       search: null,
       select: null,
-      states: [
-        'Alabama',
-        'Alaska',
-        'American Samoa',
-        'Arizona',
-        'Arkansas',
-        'California',
-        'Colorado',
-        'Connecticut',
-      ],
       items: [
         { title: 'Click Me' },
         { title: 'Click Me' },
         { title: 'Click Me' },
         { title: 'Click Me 2' },
       ],
+      places: [],
     }
   },
-  watch: {
-    search(val) {
-      val && val !== this.select && this.querySelections(val)
-    },
-  },
   methods: {
-    querySelections(v) {
-      this.loading = true
-      // Simulated ajax query
-      setTimeout(() => {
-        this.items = this.states.filter((e) => {
-          return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
-        })
-        this.loading = false
-      }, 500)
+    //get place_id from user input
+    placeData(place_id) {
+      if (place_id) this.$router.push(`/place/${place_id._id}`)
     },
+
     navBar() {
       alert('test')
     },
   },
+  created() {
+    //get places data
+    this.$axios.get('/place/all?num_per_page=200').then((res) => {
+      this.places = res.data.data.docs
+    })
+  },
 }
 </script>
+<style>
+.v-input__slot {
+  background-color: rgba(50, 51, 50, 0.1) !important;
+}
+#input-23 {
+  color: black !important;
+}
+</style>
