@@ -47,7 +47,7 @@ export default {
           name: 'PHAL SreyKhouch',
           role: 'Developer',
           message:
-            'Always look for how much progress can be made rather than perfection. Life will be a lot easier.',
+            'If you don’t go after what you want, you’ll never have it. If you don’t ask, the answer is always no. If you don’t step forward, you’re always in the same place.',
         },
         {
           _id: 2,
@@ -64,7 +64,7 @@ export default {
           name: 'LY Chanthorn',
           role: 'Developer',
           message:
-            'Nothing can stop you from reaching your goals as long as you work hard. Your goals are simply dedication and determination away.',
+            'Don’t be sad about what you couldn’t achieve yesterday and think of the great things today has for you. No one perfect!',
         },
         {
           _id: 4,
@@ -72,7 +72,7 @@ export default {
           name: 'LENG Butith',
           role: 'Developer',
           message:
-            'As a student the most important thing to remember is that laziness is your worst enemy and hard work is your best friend.',
+            'Man can live about forty days without food, about three days without water, about eight minutes without air, but only for one second without you><.',
         },
         {
           _id: 5,

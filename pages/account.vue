@@ -11,7 +11,7 @@
           Profile
         </v-tab>
         <v-tab class="justify-start">
-          <v-icon left>mdi-bookmark</v-icon>
+          <v-icon left>mdi-heart</v-icon>
           Saved
         </v-tab>
         <v-tab class="justify-start">

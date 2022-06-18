@@ -63,17 +63,19 @@ export default {
   methods: {
     //get all places
     getPlace() {
-      this.$axios.get('place/all?item_per_page=200').then((res) => {
-        // console.log(res.data.data.docs)
-        this.places = res.data.data.docs
-        console.log(this.places)
-      })
+      this.$axios
+        .get('place/all?item_per_page=200&select=saved')
+        .then((res) => {
+          // console.log(res.data.data.docs)
+          this.places = res.data.data.docs
+          console.log(this.places)
+        })
     },
     //get popular place
     getPopular() {
       this.$axios
         .get(
-          '/place/all?item_per_page=200&most_comment=true&select=story,averageRating,city'
+          '/place/all?item_per_page=5&most_comment=true&select=story,averageRating,city'
         )
         .then((res) => {
           // console.log(res.data.data.docs)
@@ -97,9 +99,20 @@ export default {
     },
   },
   created() {
-    this.getPlace()
+    // this.getPlace()
     this.getPopular()
     this.getLocalPlace()
+  },
+  watch: {
+    $route: {
+      handler(to, from) {
+        console.log(to, from)
+        console.log('RELOAD')
+        this.getPlace()
+      },
+      immediate: true,
+      deep: true,
+    },
   },
 }
 </script>

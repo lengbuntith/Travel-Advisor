@@ -84,10 +84,10 @@
             @change="placeData"
             cache-items
             return-object
-            class="mx-4"
+            class="mx-4 search"
             flat
             hide-details
-            label="Which places are you want to visit?"
+            label="Which places do you want to visit?"
             solo-inverted
             clearable
             dense
@@ -206,10 +206,10 @@ export default {
 }
 </script>
 <style>
-.v-input__slot {
+.search .v-input__slot {
   background-color: rgba(50, 51, 50, 0.1) !important;
 }
-#input-23 {
+.search #input-23 {
   color: black !important;
 }
 </style>

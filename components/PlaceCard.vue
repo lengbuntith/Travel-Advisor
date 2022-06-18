@@ -1,50 +1,57 @@
 <template>
-  <v-card
-    class="pointer image-slide"
-    elevation="0"
-    :to="`/place/${place._id}`"
-    max-width="300"
-  >
-    <v-img
-      aspect-ratio="1"
-      :src="place.thumbnail"
-      class="white--text swiper-lazy"
-      gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
+  <div>
+    <!-- Sheet notify show info user have to log in -->
+    <div class="text-center">
+      <v-bottom-sheet v-model="sheet" persistent>
+        <v-sheet class="text-center" height="100px">
+          <div class="py-3">This action require login first!</div>
+          <v-btn color="blue" to="/login">Login</v-btn>
+          <v-btn text color="error" @click="sheet = !sheet"> close </v-btn>
+        </v-sheet>
+      </v-bottom-sheet>
+    </div>
+
+    <!-- Card all places -->
+    <v-card
+      class="pointer image-slide"
+      elevation="0"
+      :to="`/place/${place._id}`"
+      max-width="300"
     >
-      <!-- <slot name="icon"></slot> -->
-      <v-card-title class="d-flex justify-space-between" style="padding: 0">
-        <div></div>
-        <div>
-          <v-btn icon>
-            <v-icon color="rgba(250,250,250,0.6)">mdi-heart</v-icon>
-          </v-btn>
-        </div>
-      </v-card-title>
-      <v-card-actions style="height: 65%" class="justify-center align-center">
-        <div class="ma-0 text-capitalize text-lg-h6">
-          {{ place.title }}
-        </div>
-        <!-- <span class="grey--text text--lighten-2 text-caption mr-2">
-          ({{ rating }})
-        </span>
-        <v-rating
-          v-model="rating"
-          background-color="white"
-          color="yellow accent-4"
-          dense
-          half-increments
-          icon-label="custom icon label text {0} of {1}"
-          size="13"
-        ></v-rating> -->
-      </v-card-actions>
-    </v-img>
-    <!-- <div style="height: 58px; overflow: hidden" class="ma-0 text-capitalize">
-      {{ place.name }}
-      <hr />
-      <i class="fal fa-map-marker-alt fa-sm"></i>
-      <span style="font-size: 10px">113 st seam reap, Cambodia</span>
-    </div> -->
-  </v-card>
+      <v-img
+        aspect-ratio="1"
+        :src="place.thumbnail"
+        class="white--text swiper-lazy"
+        gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
+      >
+        <!-- <slot name="icon"></slot> -->
+        <v-card-title class="d-flex justify-space-between" style="padding: 0">
+          <div></div>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on: tooltip }">
+              <div>
+                <v-btn
+                  :loading="loading"
+                  icon
+                  to="/"
+                  @click="addToFavorite"
+                  v-on="{ ...tooltip }"
+                >
+                  <v-icon :color="saved">mdi-heart</v-icon>
+                </v-btn>
+              </div>
+            </template>
+            <span>Save to favorite</span>
+          </v-tooltip>
+        </v-card-title>
+        <v-card-actions style="height: 65%" class="justify-center align-center">
+          <div class="ma-0 text-capitalize text-lg-h6">
+            {{ place.title }}
+          </div>
+        </v-card-actions>
+      </v-img>
+    </v-card>
+  </div>
 </template>
 
 <script>
@@ -52,7 +59,50 @@ export default {
   props: ['place'],
   data() {
     return {
-      rating: 4,
+      //color favorite cart
+      saved: 'rgba(250, 250, 250, 0.6)',
+      loading: false,
+
+      //sheet
+      sheet: false,
+    }
+  },
+  methods: {
+    //add favorite place
+    addToFavorite() {
+      this.loading = true
+      this.$axios
+        .post('/saved/add', {
+          placeID: this.place._id,
+        })
+        .then((res) => {
+          this.getSavedData()
+        })
+        .catch((error) => {
+          console.log(error.response.data)
+          if (!error.response.data.success) this.sheet = true
+        })
+    },
+
+    //get data
+    getSavedData() {
+      this.$axios.post(`/saved/place/${this.place._id}`).then((res) => {
+        this.loading = false
+        if (res.data.data[0]) {
+          this.saved = 'red'
+        } else {
+          this.saved = 'rgba(250, 250, 250, 0.6)'
+        }
+
+        console.log('DetailPlace', this.place)
+      })
+    },
+  },
+
+  //find place that user added to favorite
+  created() {
+    if (this.place.saved) {
+      if (this.place.saved[0]) if (this.place.saved[0].saved) this.saved = 'red'
     }
   },
 }

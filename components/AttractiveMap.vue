@@ -12,7 +12,7 @@
     </div>
 
     <div>
-      <h2>Details</h2>
+      <h5 class="ml-3">Details</h5>
       <ul>
         <li>Address: Siem Reap, Cambodia</li>
       </ul>

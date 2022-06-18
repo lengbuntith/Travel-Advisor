@@ -4,10 +4,10 @@
     <BaseLayout>
       <v-row class="mt-5">
         <v-col cols="12" md="6">
-          <AttractivePlaceList :places="placepercitys" />
+          <AttractivePlaceList :places="placepercitys" :city="city_cover" />
         </v-col>
         <v-col cols="12" md="6">
-          <v-card outlined tile>
+          <v-card outlined tile color="#fafafa">
             <!-- <AttractivePlaceLocation :places="place" />
              -->
             <div style="height: 720px">
@@ -29,9 +29,9 @@
               </div>
 
               <div>
-                <h2>Details</h2>
+                <h3 class="ma-2">Details</h3>
                 <ul>
-                  <li>Address: Siem Reap, Cambodia</li>
+                  <li>Address: {{ city_cover.name }}, Cambodia</li>
                 </ul>
               </div>
             </div>
@@ -70,7 +70,7 @@ export default {
     getCity() {
       this.$axios.get(`/city/detail/${this.place_id}`).then((res) => {
         this.city_cover = res.data.data
-        console.log(this.city_cover)
+        console.log('city', this.city_cover)
         // console.log(this.city_cover.lat)
         this.lat = this.city_cover.lat
         this.lng = this.city_cover.lng
