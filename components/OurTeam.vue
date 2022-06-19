@@ -4,7 +4,8 @@
       <v-sheet elevation="0" style="background-color: #fafafa"
         ><h2 style="color: rgba(64, 179, 162)">Our Team</h2>
         <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
-          Welcome to our amazing teams! United as one.
+          Welcome to our amazing teams(8)! We aren't perfect, but we do our
+          best.
         </h4>
       </v-sheet>
     </div>

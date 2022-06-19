@@ -1,7 +1,7 @@
 <template>
   <div>
     <AttractivePlaceCover :covers="city_cover" />
-    <BaseLayout>
+    <BaseLayout style="position: sticky; top: 0; z-index: 998">
       <v-row class="mt-5">
         <v-col cols="12" md="6">
           <AttractivePlaceList :places="placepercitys" :city="city_cover" />

@@ -1,15 +1,18 @@
 <template>
-  <div style="height: 720px" class="scroll pa-1">
+  <div style="height: 720px" class="scroll pb-3">
     <v-row>
       <v-card
-        class="mx-3 mt-3 d-flex align-center"
-        elevation="1"
+        style="position: sticky; top: 0; z-index: 998"
+        class="mx-3 mb-3 d-flex align-center"
+        elevation="2"
         height="50px"
         width="100%"
-        ><h3 class="pa-3">{{ city.name }} ({{ places.length }})</h3></v-card
+        ><h3 class="pa-3 text-sm-h5">
+          {{ city.name }} ({{ places.length }})
+        </h3></v-card
       >
       <v-col v-for="place in places" :key="place._id" cols="12">
-        <v-card elevation="2" width="100%">
+        <v-card elevation="0" width="100%">
           <div class="d-flex flex-no-wrap justify-start">
             <div class="d-flex flex-column">
               <v-avatar class="ma-3" size="125" tile>

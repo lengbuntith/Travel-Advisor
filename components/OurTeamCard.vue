@@ -4,7 +4,7 @@
       <v-img
         height="200"
         :src="member.profile"
-        gradient="to top right, rgba(0,0,0,.1), rgba(25,32,72,.25)"
+        gradient="to top right, rgba(0,0,0,.1), rgba(25,32,72,.1)"
       ></v-img>
       <div class="pa-2">
         <h4>{{ member.name }}</h4>

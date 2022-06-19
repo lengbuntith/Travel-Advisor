@@ -11,15 +11,6 @@
       class="white--text swiper-lazy"
       gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
     >
-      <!-- <slot name="icon"></slot> -->
-      <!-- <v-card-title class="d-flex justify-space-between" style="padding: 0">
-        <div></div>
-        <div>
-          <v-btn icon>
-            <v-icon color="rgba(250,250,250,0.6)">mdi-hear</v-icon>
-          </v-btn>
-        </div>
-      </v-card-title> -->
       <v-card-actions style="height: 100%" class="justify-center align-center">
         <div class="ma-0 text-capitalize text-lg-h5">
           {{ place.title }}
@@ -27,7 +18,7 @@
       </v-card-actions>
     </v-img>
     <div
-      style="height: 68px; overflow: hidden; background-color: white"
+      style="height: 72px; overflow: hidden; background-color: white"
       class="ma-0 text-capitalize pl-1 pr-1"
     >
       <v-rating
@@ -44,14 +35,19 @@
         class="d-flex justify-space-between"
         v-if="place.city"
       >
-        <div>Located: {{ place.city.name }}</div>
-        <div>
-          <i class="fa-light fa-comment"></i> {{ place.totalComment }} Reviews
+        <div class="d-flex align-center">
+          <span class="d-none d-lg-flex ma-0 pr-1">Located:</span>
+          {{ place.city.name }}
+        </div>
+        <div class="d-flex align-center">
+          <i class="fa-light fa-comment pr-1"></i>
+          {{ place.totalComment }}
+          <span class="d-none d-lg-flex pa-1">Reviews</span>
         </div>
       </div>
       <hr />
       <i class="fal fa-map-marker-alt fa-sm"></i>
-      <span style="font-size: 10px">113 st seam reap, Cambodia</span>
+      <span style="font-size: 10px"> {{ place.city.name }} , Cambodia</span>
     </div>
   </v-card>
 </template>
