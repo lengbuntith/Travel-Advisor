@@ -5,7 +5,7 @@
       Find best ways for your travel.
     </h4>
     <client-only>
-      <l-map :zoom="13" :center="[placeDetail.lat, placeDetail.lng]">
+      <l-map :zoom="9" :center="[placeDetail.lat, placeDetail.lng]">
         <l-tile-layer
           url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         ></l-tile-layer>

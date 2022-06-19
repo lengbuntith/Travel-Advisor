@@ -81,6 +81,7 @@
                 prepend-icon="mdi-filter-variant"
                 solo
                 flat
+                style="width: 240px"
               >
                 <template v-slot:selection="{ attrs, item, select, selected }">
                   <v-chip
