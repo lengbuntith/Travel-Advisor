@@ -43,7 +43,8 @@ export default {
       members: [
         {
           _id: 1,
-          profile: '',
+          profile:
+            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655591870/ytlnvlqmepbxtqh6thzq.jpg',
           name: 'PHAL SreyKhouch',
           role: 'Developer',
           message:
@@ -51,7 +52,8 @@ export default {
         },
         {
           _id: 2,
-          profile: '',
+          profile:
+            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655591530/jup3pvvdj7jdbpgk1qyr.jpg',
           name: 'KONG Sopheap',
           role: 'Developer',
           message:
@@ -68,7 +70,8 @@ export default {
         },
         {
           _id: 4,
-          profile: '',
+          profile:
+            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655609395/byjwlxj9s2hp1rvj1giv.jpg',
           name: 'LENG Butith',
           role: 'Developer',
           message:
@@ -84,7 +87,8 @@ export default {
         },
         {
           _id: 6,
-          profile: '',
+          profile:
+            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655592049/avlsdo1m6gujceic5oqp.jpg',
 
           name: 'KHENG Piseth',
           role: 'Developer',
@@ -93,7 +97,8 @@ export default {
         },
         {
           _id: 7,
-          profile: '',
+          profile:
+            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655592170/gvrchwgsj9lmuptkrlie.jpg',
           name: 'KOENG Gana',
           role: 'Developer',
           message:
@@ -113,6 +118,9 @@ export default {
           el: '.swiper-pagination',
           dynamicBullets: true,
         },
+        mousewheel: {
+          releaseOnEdges: true,
+        },
         slidesPerView: 2,
         spaceBetween: 10,
         // pagination: {
@@ -129,7 +137,7 @@ export default {
             spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 10,
           },
           768: {

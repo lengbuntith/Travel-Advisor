@@ -45,7 +45,10 @@
               <p class="text-justify px-2 line-clamp">
                 {{ place.story }}
               </p>
-              <nuxt-link style="text-decoration: none" :to="place._id">
+              <nuxt-link
+                style="text-decoration: none"
+                :to="`/place/${place._id}`"
+              >
                 View detail
               </nuxt-link>
             </div>

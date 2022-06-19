@@ -6,24 +6,19 @@
     max-width="221"
     max-height="300"
   >
-    <v-lazy transition="fade-transition">
-      <v-img
-        aspect-ratio="1"
-        :src="currentImage"
-        gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
-        class="banner white--text ma-0"
-        style="transition: 2 ease-in-out swiper-lazy"
-      >
-        <v-card-actions
-          style="height: 100%"
-          class="justify-center align-center"
-        >
-          <div class="ma-0 text-capitalize text-lg-h6">
-            {{ name }}
-          </div>
-        </v-card-actions>
-      </v-img>
-    </v-lazy>
+    <v-img
+      aspect-ratio="1"
+      :src="currentImage"
+      gradient="to top right, rgba(188,188,188,.33), rgba(0,0,0,.5)"
+      class="banner white--text ma-0"
+      style="transition: 2 ease-in-out swiper-lazy"
+    >
+      <v-card-actions style="height: 100%" class="justify-center align-center">
+        <div class="ma-0 text-capitalize text-lg-h6">
+          {{ name }}
+        </div>
+      </v-card-actions>
+    </v-img>
   </v-card>
 </template>
 

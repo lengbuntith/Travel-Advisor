@@ -81,23 +81,21 @@
           <v-card-text>
             <div class="d-flex justify-center pa-2">
               <div style="border-radius: 4px">
-                <v-lazy transition="fade-transition">
-                  <v-img
-                    gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
-                    class="white--text align-end"
-                    width="320"
-                    height="250"
-                    v-if="suggestion.place"
-                    :src="suggestion.place.thumbnail"
+                <v-img
+                  gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
+                  class="white--text align-end"
+                  width="320"
+                  height="250"
+                  v-if="suggestion.place"
+                  :src="suggestion.place.thumbnail"
+                >
+                  <div
+                    class="d-flex justify-center align-center"
+                    style="height: 250px; font-size: 20px; font-weight: 700"
                   >
-                    <div
-                      class="d-flex justify-center align-center"
-                      style="height: 250px; font-size: 20px; font-weight: 700"
-                    >
-                      {{ suggestion.place.title }}
-                    </div>
-                  </v-img>
-                </v-lazy>
+                    {{ suggestion.place.title }}
+                  </div>
+                </v-img>
                 <!-- <v-card-title class="d-flex justify-center">{{
                 suggestion.title
               }}</v-card-title> -->

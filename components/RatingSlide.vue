@@ -47,6 +47,9 @@ export default {
       swiperOption: {
         slidesPerView: 2.5,
         spaceBetween: 10,
+        mousewheel: {
+          releaseOnEdges: true,
+        },
         // pagination: {
         //   el: '.swiper-pagination',
         //   clickable: true,

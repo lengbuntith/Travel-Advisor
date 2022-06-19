@@ -50,11 +50,11 @@ export default {
   data() {
     return {
       loading: false,
-      averageRating: 0,
+      averageRating: null,
       favorites: [
         {
           place: {
-            thumbnail: '',
+            thumbnail: null,
           },
         },
       ],
