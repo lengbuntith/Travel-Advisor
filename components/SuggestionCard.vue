@@ -1,12 +1,8 @@
 <template>
   <BaseLayout>
-    <v-snackbar
-      v-model="snackbar"
-      :timeout="timeout"
-      class="d-flex justify-center"
-      color="white"
-    >
-      {{ text }}
+    <!-- message alert -->
+    <v-snackbar v-model="snackbar" class="d-flex justify-center" color="white">
+      <div class="d-flex justify-center" :class="colorMessage">{{ text }}</div>
     </v-snackbar>
     <div class="d-flex align-center">
       <v-tabs
@@ -77,31 +73,33 @@
         md="6"
         lg="4"
       >
-        <v-card outlined height="550">
+        <v-card height="600" outlined style="border-radius: 6px">
           <v-card-text>
-            <div class="d-flex justify-center pa-2">
+            <div style="font-size: 10px; color: rgba(0, 0, 0, 0.6)">
+              Posted: {{ convertDate(suggestion.createdAt) }}
+            </div>
+            <div class="d-flex justify-center pb-2">
               <div style="border-radius: 4px">
-                <v-img
-                  gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
-                  class="white--text align-end"
-                  width="320"
-                  height="250"
-                  v-if="suggestion.place"
-                  :src="suggestion.place.thumbnail"
-                >
-                  <div
-                    class="d-flex justify-center align-center"
-                    style="height: 250px; font-size: 20px; font-weight: 700"
+                <v-card elevation="0" :to="`/suggestion/${suggestion._id}`">
+                  <v-img
+                    gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
+                    class="white--text align-end"
+                    width="320"
+                    height="250"
+                    v-if="suggestion.place"
+                    :src="suggestion.place.thumbnail"
                   >
-                    {{ suggestion.place.title }}
-                  </div>
-                </v-img>
-                <!-- <v-card-title class="d-flex justify-center">{{
-                suggestion.title
-              }}</v-card-title> -->
+                    <div
+                      class="d-flex justify-center align-center"
+                      style="height: 250px; font-size: 20px; font-weight: 700"
+                    >
+                      {{ suggestion.place.title }}
+                    </div>
+                  </v-img>
+                </v-card>
                 <hr />
                 <div
-                  class="mt-2 d-flex justify-center align-center"
+                  class="mt-2 d-flex flex-column justify-center align-center"
                   v-if="suggestion.user"
                 >
                   <v-avatar>
@@ -109,38 +107,42 @@
                       :src="
                         suggestion.user.imageUrl
                           ? suggestion.user.imageUrl
-                          : '/images/logoTravel.png'
+                          : '/images/profile.png'
                       "
                     >
                     </v-img>
                   </v-avatar>
 
                   <div style="font-weight: 700" class="ml-2">
-                    {{ suggestion.user.firstName }}
-                    {{ suggestion.user.lastName }}
+                    <div>
+                      {{
+                        suggestion.user.firstName +
+                        ' ' +
+                        suggestion.user.lastName
+                      }}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
             <div class="line-clamp mt-1" style="height: 80px">
               {{ suggestion.message }}
             </div>
           </v-card-text>
           <div class="ml-4">
-            <v-icon class="mr-1"> mdi-thumb-up-outline </v-icon>
-            <span class="subheading mr-1">{{ suggestion.like }}K</span>
+            <v-btn icon @click="addLiked(suggestion._id)">
+              <v-icon class="mr-1" medium :color="liked"> mdi-thumb-up </v-icon>
+            </v-btn>
+            <span class="subheading mr-1">{{ suggestion.totalLike }}</span>
             <span class="mr-1">·</span>
             <v-icon class="mr-1"> mdi-comment-processing </v-icon>
-            <span class="subheading">{{ suggestion.comment }}K</span>
+            <span class="subheading">{{ suggestion.totalComment }}</span>
           </div>
-          <YourIdea />
+          <YourIdea :suggestionId="suggestion._id" />
         </v-card>
       </v-col>
     </v-row>
-
-    <!-- <div class="text-center">
-      <v-pagination v-model="page" :length="4" circle></v-pagination>
-    </div> -->
 
     <div @click="pageNum" class="text-center pt-2 pt-md-4">
       <!-- <div
@@ -163,6 +165,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
   data() {
     return {
@@ -179,13 +182,20 @@ export default {
       snackbar: false,
       text: 'Create successful!',
       timeout: 2000,
-      sort: '',
+
+      //color button like
+      colorMessage: ' green--text',
+      liked: 'rgba(0,0,0,.6)',
     }
   },
   methods: {
+    //date formatter
+    convertDate(date) {
+      return moment(date).format('MMMM Do YYYY, h:mm:ss a')
+    },
+
+    //paginate
     pageNum() {
-      // alert(this.page)
-      //this.getSuggestion(this.page)
       this.$vuetify.goTo(0)
     },
 
@@ -217,19 +227,40 @@ export default {
       this.input.message = ''
       this.input.place = ''
     },
+    //add like
+    addLiked(suggestionId) {
+      this.$axios
+        .post('/like/add', {
+          suggestionID: suggestionId,
+        })
+        .then((res) => {
+
+          let page = this.$route.query.page
+          let sort = this.$route.query.sort
+          this.getSuggestion(page, sort)
+        })
+        .catch((error) => {
+          console.log(error.response.data)
+          this.text = error.response.data.error
+          this.colorMessage = ' red--text'
+
+          this.isLoading = false
+          this.snackbar = true
+        })
+    },
 
     //get all suggestion
     getSuggestion(page, sort) {
       this.$axios
-        .get(`/suggestion/all?page=${page}&sort=${sort}`)
+        .get(`/suggestion/all?page=${page}&sort=${sort}&num_per_page=12`)
         .then((res) => {
           this.suggestions = res.data.data.docs
-
           //pagination
           this.length = res.data.data.totalPages
         })
     },
 
+    //sort by tabs
     handlerPage(page) {
       let sort = this.$route.query.sort
       this.$router.push(`/suggestion?page=${page}&sort=${sort}`)
@@ -261,6 +292,18 @@ export default {
       immediate: true,
       deep: true,
     },
+  },
+
+  created() {
+    this.$nuxt.$on('getSuggestion', () => {
+      let page = this.$route.query.page
+      let sort = this.$route.query.sort
+      this.getSuggestion(page, sort)
+    })
+  },
+
+  beforeDestroy() {
+    this.$nuxt.$off('getSuggestion')
   },
 }
 </script>
