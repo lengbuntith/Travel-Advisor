@@ -1,5 +1,9 @@
 <template>
-  <div id="map-wrap" style="height: 400px" class="mt-10">
+  <div
+    id="map-wrap"
+    style="height: 400px; position: sticky; z-index: 900"
+    class="mt-10"
+  >
     <h3 style="font-size: 20px">Location</h3>
     <h4 class="mb-3" style="color: rgba(0, 0, 0, 0.3)">
       Find best ways for your travel.

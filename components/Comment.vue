@@ -68,7 +68,7 @@
           <Review :ratings="ratings" />
         </v-col>
         <v-col cols="12" sm="12" md="9" class="mt-0 mt-lg-15">
-          <v-card elevation="1">
+          <v-card elevation="0">
             <div>
               <v-combobox
                 v-model="chips"
@@ -106,7 +106,14 @@
               <div class="d-flex justify-space-between">
                 <div class="d-flex align-center">
                   <v-avatar>
-                    <v-img :src="comment.userImageUrl"> </v-img>
+                    <v-img
+                      :src="
+                        comment.userImageUrl
+                          ? comment.userImageUrl
+                          : '/images/profile.png'
+                      "
+                    >
+                    </v-img>
                   </v-avatar>
                   <div>
                     <div style="font-weight: 700" class="ml-3">
@@ -298,7 +305,7 @@ export default {
             parseInt(res.data.data.docs[0].totalComment) / 6
           )
           this.length_page++
-          console.log(this.length_page)
+          // console.log(this.length_page)
         })
     },
   },
