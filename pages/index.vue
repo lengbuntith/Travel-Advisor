@@ -68,7 +68,7 @@ export default {
     getPopular() {
       this.$axios
         .get(
-          '/place/all?item_per_page=5&most_comment=true&select=story,averageRating,city'
+          '/place/all?item_per_page=6&most_comment=true&select=story,averageRating,city'
         )
         .then((res) => {
           this.popularPlaces = res.data.data.docs
