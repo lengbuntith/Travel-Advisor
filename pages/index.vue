@@ -15,6 +15,9 @@
     <BaseLayout>
       <PlaceSlide :places="places"></PlaceSlide>
       <rating-slide :places="popularPlaces"></rating-slide>
+    </BaseLayout>
+    <AboutCambodia />
+    <BaseLayout>
       <local-slide :places="localPlaces"></local-slide>
       <trends-slide
         v-for="(place, index) in trendPlaces"
@@ -33,17 +36,7 @@
 </template>
 
 <script>
-import LocalSlide from '~/components/LocalSlide.vue'
-import MapSvg from '~/components/MapSvg.vue'
-import RatingSlide from '~/components/RatingSlide.vue'
-import TrendsSlide from '~/components/TrendsSlide.vue'
 export default {
-  components: {
-    RatingSlide,
-    LocalSlide,
-    TrendsSlide,
-    MapSvg,
-  },
   name: 'Home',
   data() {
     return {
@@ -78,19 +71,17 @@ export default {
           '/place/all?item_per_page=5&most_comment=true&select=story,averageRating,city'
         )
         .then((res) => {
-          // console.log(res.data.data.docs)
           this.popularPlaces = res.data.data.docs
         })
     },
     //get popular place
     getLocalPlace() {
       this.$axios.get('/city/all').then((res) => {
-        // console.log(res.data.data.docs)
         this.localPlaces = res.data.data
       })
     },
+    //responsive mobile
     handleResize() {
-      console.log('called')
       if (window.innerWidth < 1281 && this.show == true) {
         this.show = false
       } else if (window.innerWidth >= 1281) {
@@ -98,21 +89,12 @@ export default {
       }
     },
   },
+
+  //get province and city place
   created() {
-    // this.getPlace()
-    this.getPopular()
     this.getLocalPlace()
-  },
-  watch: {
-    $route: {
-      handler(to, from) {
-        console.log(to, from)
-        console.log('RELOAD')
-        this.getPlace()
-      },
-      immediate: true,
-      deep: true,
-    },
+    this.getPlace()
+    this.getPopular()
   },
 }
 </script>

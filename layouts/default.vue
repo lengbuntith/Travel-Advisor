@@ -3,16 +3,16 @@
     <div style="position: sticky; top: 0; z-index: 999">
       <TopBar />
       <BottomBar />
-      <v-progress-linear
+      <!-- <v-progress-linear
         height="5"
         v-show="show"
         :value="percent"
         background-color="#aaa"
         color="yellow darken-2"
-      ></v-progress-linear>
+      ></v-progress-linear> -->
     </div>
     <v-main>
-      <ScrolltoTop />
+      <ScrolltoTop style="position: sticky; top: 0; z-index: 999" />
       <Nuxt />
     </v-main>
     <TheFooter />
@@ -22,10 +22,7 @@
 <script>
 export default {
   data() {
-    return {
-      percent: 0,
-      show: false,
-    }
+    return {}
   },
   //render width
   // mounted() {
@@ -75,5 +72,8 @@ html {
   a {
     font-size: 12px;
   }
+}
+.nuxt-progress {
+  background-color: rgba(64, 172, 87);
 }
 </style>

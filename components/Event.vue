@@ -82,8 +82,8 @@
         md="6"
         lg="4"
       >
-        <v-card outlined :to="`/event/${event._id}`">
-          <div>
+        <v-card outlined style="border-radius: 6px" :to="`/event/${event._id}`">
+          <div class="px-2">
             <div>
               <div>
                 <div
@@ -95,7 +95,7 @@
                       :src="
                         event.user.imageUrl
                           ? event.user.imageUrl
-                          : '/images/logoTravel.png'
+                          : '/images/profile.png'
                       "
                     >
                     </v-img>
@@ -132,7 +132,7 @@
               </v-card-text>
             </div>
           </div>
-          <div class="d-flex justify-center mb-3">
+          <div class="d-flex justify-center mb-2 pb-4">
             <v-btn
               color="success"
               style="border-radius: 4px"
@@ -255,13 +255,15 @@ export default {
 
     //get All event data
     getEvent(page, sort) {
-      this.$axios.get(`/event/all?page=${page}&sort=${sort}`).then((res) => {
-        this.events = res.data.data.docs
-        // console.log('event', res.data.data)
+      this.$axios
+        .get(`/event/all?page=${page}&sort=${sort}&num_per_page=12`)
+        .then((res) => {
+          this.events = res.data.data.docs
+          // console.log('event', res.data.data)
 
-        //pagination
-        this.length = res.data.data.totalPages
-      })
+          //pagination
+          this.length = res.data.data.totalPages
+        })
     },
 
     handlerPage(page) {

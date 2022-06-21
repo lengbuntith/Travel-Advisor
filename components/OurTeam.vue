@@ -45,7 +45,7 @@ export default {
         {
           _id: 1,
           profile:
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655591870/ytlnvlqmepbxtqh6thzq.jpg',
+            'https://res.cloudinary.com/dik7npkoo/image/upload/w_700/h_400/q_60/v1655591870/ytlnvlqmepbxtqh6thzq.jpg',
           name: 'PHAL SreyKhouch',
           role: 'Developer',
           message:
@@ -54,7 +54,7 @@ export default {
         {
           _id: 2,
           profile:
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655591530/jup3pvvdj7jdbpgk1qyr.jpg',
+            'https://res.cloudinary.com/dik7npkoo/image/upload/w_700/h_400/q_60/v1655591530/jup3pvvdj7jdbpgk1qyr.jpg',
           name: 'KONG Sopheap',
           role: 'Developer',
           message:
@@ -63,7 +63,7 @@ export default {
         {
           _id: 3,
           profile:
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655223719/ablizkrsfjif7ikdqvzu.jpg',
+            'https://res.cloudinary.com/dik7npkoo/image/upload/w_700/h_400/q_60/v1655223719/ablizkrsfjif7ikdqvzu.jpg',
           name: 'LY Chanthorn',
           role: 'Developer',
           message:
@@ -72,8 +72,8 @@ export default {
         {
           _id: 4,
           profile:
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655609395/byjwlxj9s2hp1rvj1giv.jpg',
-          name: 'LENG Butith',
+            'https://res.cloudinary.com/dik7npkoo/image/upload/w_700/h_400/q_60/v1655609395/byjwlxj9s2hp1rvj1giv.jpg',
+          name: 'LENG Buntith',
           role: 'Developer',
           message:
             'Man can live about forty days without food, about three days without water, about eight minutes without air, but only for one second without you><.',
@@ -89,7 +89,7 @@ export default {
         {
           _id: 6,
           profile:
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655592049/avlsdo1m6gujceic5oqp.jpg',
+            'https://res.cloudinary.com/dik7npkoo/image/upload/w_700/h_400/q_60/v1655592049/avlsdo1m6gujceic5oqp.jpg',
 
           name: 'KHENG Piseth',
           role: 'Developer',
@@ -99,7 +99,7 @@ export default {
         {
           _id: 7,
           profile:
-            'https://res.cloudinary.com/dik7npkoo/image/upload/v1655592170/gvrchwgsj9lmuptkrlie.jpg',
+            'https://res.cloudinary.com/dik7npkoo/image/upload/w_700/h_400/q_60/v1655592170/gvrchwgsj9lmuptkrlie.jpg',
           name: 'KOENG Gana',
           role: 'Developer',
           message:

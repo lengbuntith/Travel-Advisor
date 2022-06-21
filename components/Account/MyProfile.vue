@@ -151,6 +151,11 @@ export default {
     },
 
     async handlerImage(file) {
+      //limit size less than 1mb
+      if (file.size > 2 * 566979) {
+        return alert('Limited size less than 1mb')
+      }
+
       this.uploadingImage = true
       //upload image
       let formData = new FormData()

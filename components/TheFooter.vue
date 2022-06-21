@@ -42,8 +42,8 @@
               <h3>Useful Links</h3>
               <ul>
                 <li><nuxt-link to="/">Home</nuxt-link></li>
-                <li><nuxt-link to="/suggestion">Suggestion</nuxt-link></li>
-                <li><nuxt-link to="/event">Event</nuxt-link></li>
+                <li><nuxt-link to="/suggestion?page=1&sort=-1">Suggestion</nuxt-link></li>
+                <li><nuxt-link to="/event?page=1&sort=-1">Event</nuxt-link></li>
                 <li><nuxt-link to="/login">Login</nuxt-link></li>
               </ul>
             </div>
@@ -53,7 +53,9 @@
               <h3>Support Links</h3>
               <ul>
                 <li><nuxt-link to="/FAQ">FAQ</nuxt-link></li>
-                <li><nuxt-link to="/privacypolicy">Privacy & Policy</nuxt-link></li>
+                <li>
+                  <nuxt-link to="/privacypolicy">Privacy & Policy</nuxt-link>
+                </li>
                 <li><nuxt-link to="/term">Terms & Conditions</nuxt-link></li>
               </ul>
             </div>
