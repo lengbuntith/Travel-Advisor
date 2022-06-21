@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <div class="d-flex align-center flex-row">
       <h1 style="width: 96%">{{ placeDetail.title }}</h1>
 
@@ -8,6 +8,7 @@
         <template v-slot:activator="{ on: tooltip }">
           <div>
             <v-btn
+             v-show="$auth.loggedIn"
               :loading="isloading"
               icon
               :to="`/place/${placeDetail._id}`"
@@ -106,6 +107,7 @@ export default {
   watch: {
     placeDetail: {
       handler(place) {
+        console.log(this.$auth.loggedIn);
         if (place) this.checkFavorited()
       },
       immediate: true,
