@@ -6,7 +6,13 @@
         <v-sheet class="text-center" height="100px">
           <div class="py-3">This action require login first!</div>
           <v-btn color="blue" to="/login">Login</v-btn>
-          <v-btn text color="error" @click="sheet = !sheet"> close </v-btn>
+          <v-btn
+            text
+            color="error"
+            @click=";(sheet = !sheet), (loading = !loading)"
+          >
+            close
+          </v-btn>
         </v-sheet>
       </v-bottom-sheet>
     </div>
@@ -41,7 +47,7 @@
                 </v-btn>
               </div>
             </template>
-            <span>Save to favorite</span>
+            <span>{{ text }}</span>
           </v-tooltip>
         </v-card-title>
         <v-card-actions style="height: 65%" class="justify-center align-center">
@@ -62,6 +68,7 @@ export default {
       //color favorite cart
       saved: 'rgba(250, 250, 250, 0.6)',
       loading: false,
+      text: 'click to save',
 
       //sheet
       sheet: false,
@@ -90,11 +97,13 @@ export default {
         this.loading = false
         if (res.data.data[0]) {
           this.saved = 'red'
+          this.text = 'save'
         } else {
           this.saved = 'rgba(250, 250, 250, 0.6)'
+          this.text = 'click to save'
         }
 
-        console.log('DetailPlace', this.place)
+        // console.log('DetailPlace', this.place)
       })
     },
   },
@@ -102,7 +111,11 @@ export default {
   //find place that user added to favorite
   created() {
     if (this.place.saved) {
-      if (this.place.saved[0]) if (this.place.saved[0].saved) this.saved = 'red'
+      if (this.place.saved[0])
+        if (this.place.saved[0].saved) {
+          this.saved = 'red'
+          this.text = 'saved'
+        }
     }
   },
 }
