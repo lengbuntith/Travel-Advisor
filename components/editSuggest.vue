@@ -24,7 +24,6 @@
             dense
             type="text"
             name="place"
-            required
             label="Select place"
           ></v-autocomplete>
           <v-textarea
@@ -34,7 +33,6 @@
             v-model="input.message"
             label="Message"
             name="message"
-            required
             type="text"
           ></v-textarea>
           <v-btn class="mr-4 blue darken-1 white--text" type="submit">
