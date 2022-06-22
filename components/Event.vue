@@ -12,7 +12,7 @@
       >
         <v-tab class="ma-0" href="#all" @click="handlerSort(1)"> Oldest </v-tab>
         <v-tab href="#newest" @click="handlerSort(-1)"> Newest </v-tab>
-        <v-tab href="#popular"> Popular </v-tab>
+        <v-tab href="#owner" @click="handlerOwn()"> Your Posts </v-tab>
         <v-tabs-slider color="DarkCyan"></v-tabs-slider>
       </v-tabs>
       <div class="text-center" v-show="this.$auth.loggedIn">
@@ -59,12 +59,16 @@
                 label="Requirement"
                 type="text"
                 name="requirement"
-                required
               ></v-textarea>
               <v-btn class="mr-4 blue lighten-2 white--text" type="submit">
                 Post
               </v-btn>
-              <v-btn type="reset" @click="clear" class="red--text">
+              <v-btn
+                type="reset"
+                :loading="isLoading"
+                @click="clear"
+                class="red--text"
+              >
                 Close
               </v-btn>
             </form>
@@ -82,7 +86,7 @@
         md="6"
         lg="4"
       >
-        <v-card outlined style="border-radius: 6px" :to="`/event/${event._id}`">
+        <v-card outlined style="border-radius: 6px">
           <div class="px-2">
             <div>
               <div>
@@ -100,29 +104,38 @@
                     >
                     </v-img>
                   </v-avatar>
-                  <div style="font-weight: 700" class="d-flex pl-3 flex-column">
-                    <div>
-                      {{ event.user.firstName }} {{ event.user.lastName }}
+                  <div style="font-weight: 700" class="d-flex pl-3 flex-row">
+                    <div class="d-flex flex-column" style="width: 100%">
+                      <div>
+                        {{ event.user.firstName }} {{ event.user.lastName }}
+                      </div>
+                      <div style="font-size: 10px; color: rgba(0, 0, 0, 0.6)">
+                        Posted: {{ convertDate(event.createdAt) }}
+                      </div>
                     </div>
-                    <div style="font-size: 10px; color: rgba(0, 0, 0, 0.6)">
-                      Posted: {{ convertDate(event.createdAt) }}
+                    <div class="suggest mb-3" v-show="tabs == 'owner'">
+                      <v-btn v-if="checkUserOwnComment(event.user._id)" icon>
+                        <deleteEvent :eventId="event._id" />
+                      </v-btn>
                     </div>
                   </div>
                 </div>
                 <div class="d-flex justify-center ma-2" v-if="event.place">
-                  <v-img
-                    gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
-                    style="border-radius: 5px"
-                    height="250"
-                    :src="event.place.thumbnail"
-                  >
-                    <div
-                      class="d-flex justify-center align-center white--text"
-                      style="height: 250px; font-size: 20px; font-weight: 700"
+                  <v-card :to="`/event/${event._id}`">
+                    <v-img
+                      gradient="to top right, rgba(0,0,0,.01), rgba(25,32,72,.7)"
+                      style="border-radius: 5px"
+                      height="250"
+                      :src="event.place.thumbnail"
                     >
-                      {{ event.place.title }}
-                    </div>
-                  </v-img>
+                      <div
+                        class="d-flex justify-center align-center white--text"
+                        style="height: 250px; font-size: 20px; font-weight: 700"
+                      >
+                        {{ event.place.title }}
+                      </div>
+                    </v-img>
+                  </v-card>
                 </div>
               </div>
               <v-card-text>
@@ -146,12 +159,12 @@
       </v-col>
     </v-row>
     <div class="text-center mt-7" @click="pageNum">
-      <!-- <div
+      <div
         class="d-flex align-center justify-center red--text"
         v-if="events.length == 0"
       >
         No data
-      </div> -->
+      </div>
       <v-container class="max-width">
         <v-pagination
           v-model="page"
@@ -190,7 +203,6 @@ import moment from 'moment'
 export default {
   data() {
     return {
-      isLoading: false,
       length: 1,
       items: [{ _id: 1, title: 'test' }],
       input: {
@@ -202,9 +214,10 @@ export default {
       page: 1,
       events: [],
       snackbar: false,
-      text: 'Create successful!',
       timeout: 2000,
       tabs: 'newest',
+      by_user: '',
+      isLoading: false,
 
       //snackbar
       snackbar: false,
@@ -234,6 +247,7 @@ export default {
 
     //create event
     createEvent() {
+      this.isLoading = true
       this.$axios
         .post('/event/create', {
           place_id: this.input.place,
@@ -241,24 +255,36 @@ export default {
           requirement: this.input.requirement,
         })
         .then((res) => {
-          console.log(res.data)
-          this.getEvent(1, -1)
+          let page = this.$route.query.page
+          let sort = this.$route.query.sort
+          if (this.$route.query.each_user)
+            this.by_user = this.$route.query.each_user
+          this.getEvent(page, sort)
+          this.isLoading = false
         })
       this.dialog = false
-      this.snackbar = true
       this.input.place = ''
       this.input.describe = ''
       this.input.requirement = ''
-      this.tabs = 'newest'
-      this.isLoading = true
+    },
+    //check owner if owner can delete their comment
+    checkUserOwnComment(userId) {
+      let status = false
+      let user_id = ''
+      if (this.$auth.loggedIn) user_id = this.$auth.user.data._id
+      if (userId == user_id) status = true
+      return status
     },
 
     //get All event data
     getEvent(page, sort) {
       this.$axios
-        .get(`/event/all?page=${page}&sort=${sort}&num_per_page=12`)
+        .get(
+          `/event/all?page=${page}&sort=${sort}&num_per_page=12&each_user=${this.by_user}`
+        )
         .then((res) => {
           this.events = res.data.data.docs
+          this.by_user = ''
           // console.log('event', res.data.data)
 
           //pagination
@@ -275,22 +301,22 @@ export default {
       let page = 1
       this.$router.push(`/event?page=${page}&sort=${sort}`)
     },
+    handlerOwn() {
+      this.$router.push(`/event?page=1&sort=-1&each_user=1`)
+    },
   },
 
-  // created() {
-  //   this.getEvent(1)
-  //   this.$axios.get('/place/all?item_per_page=100').then((res) => {
-  //     console.log('place', res.data.data.docs)
-  //     this.items = res.data.data.docs
-  //     console.log(this.items)
-  //   })
-  // },
   watch: {
     '$route.query': {
       handler(query) {
-        console.log(query)
         let page = query.page
         let sort = query.sort
+        if (query.each_user) {
+          this.by_user = query.each_user
+          if (this.tabs == 'newest') {
+            this.by_user = ''
+          }
+        }
         if (page) this.page = parseInt(page)
 
         this.getEvent(page, sort)
@@ -305,6 +331,20 @@ export default {
       immediate: true,
       deep: true,
     },
+  },
+  //event bus allow child contack parent
+  created() {
+    this.$nuxt.$on('getEvent', () => {
+      let page = this.$route.query.page
+      let sort = this.$route.query.sort
+      if (this.$route.query.each_user)
+        this.by_user = this.$route.query.each_user
+      this.getEvent(page, sort)
+    })
+  },
+
+  beforeDestroy() {
+    this.$nuxt.$off('getEvent')
   },
 }
 </script>

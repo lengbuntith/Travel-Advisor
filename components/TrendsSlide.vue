@@ -1,41 +1,23 @@
 <template>
   <div class="my-10">
-    <v-layout
-      style="margin: 2vh 0 0 1vw"
-      class="d-flex flex-column d-sm-none justify-center align-center"
-    >
-      <h2 style="color: #40b3a2">{{ category }}</h2>
+    <v-layout class="d-flex flex-column d-sm-none justify-center align-center">
+      <h2 style="color: #40b3a2">Top 3 Most Tourist Visited</h2>
       <p class="text-justify pr-md-10 pr-sm-0">
-        Top trends places in Cambodia, nowadays. Keep place with the latest
-        travel trends and enjoy your day in Cambodia.<nuxt-link to="/"
+        Top trends city in Cambodia, nowadays. Keep place with the latest travel
+        trends and enjoy your day in Cambodia.<nuxt-link to="/trend city"
           >view more</nuxt-link
         >
       </p>
     </v-layout>
-    <swiper
-      class="swiper"
-      :style="`height: ${height[1]}`"
-      :options="swiperOption"
-    >
-      <swiper-slide
-        v-for="(place, index) in places"
-        :key="index"
-        class="swiper-slide"
-      >
-        <trends-card
-          :place="place"
-          :height="height[parseInt(index)]"
-          :margin="margin"
-        ></trends-card>
+    <swiper class="swiper" :options="swiperOption">
+      <swiper-slide v-for="city in citys" :key="city._id" class="swiper-slide">
+        <trends-card :city="city" />
       </swiper-slide>
 
-      <v-layout
-        style="margin: 2vh 0 0 1vw"
-        class="d-none d-sm-flex flex-column"
-      >
-        <h2 style="color: #40b3a2">{{ category }}</h2>
+      <v-layout class="d-none d-sm-flex flex-column mt-8 ml-4">
+        <h2 style="color: #40b3a2">Top 3 Most Tourist Visited</h2>
         <p>
-          Top trends places in Cambodia, nowadays. Keep place with the latest
+          Top trends city in Cambodia, nowadays. Keep place with the latest
           travel trends and enjoy your day in Cambodia.
         </p>
         <v-btn
@@ -43,7 +25,7 @@
           elevation="0"
           class="text-uppercase white--text font-weight-bold"
           max-width="100"
-          to="/#"
+          to="/trend city"
           >View more</v-btn
         >
       </v-layout>
@@ -54,15 +36,13 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
-import TrendsCard from './TrendsCard.vue'
 export default {
   components: {
     Swiper,
     SwiperSlide,
-    TrendsCard,
   },
 
-  props: ['category', 'places'],
+  props: ['citys'],
 
   data() {
     return {

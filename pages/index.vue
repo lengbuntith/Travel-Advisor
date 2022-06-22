@@ -19,12 +19,7 @@
     <AboutCambodia />
     <BaseLayout>
       <local-slide :places="localPlaces"></local-slide>
-      <trends-slide
-        v-for="(place, index) in trendPlaces"
-        :key="'trend' + index"
-        :category="place.category"
-        :places="place.places"
-      ></trends-slide>
+      <trends-slide :citys="trendCitys"></trends-slide>
     </BaseLayout>
     <JoinUs />
     <div class="mb-5">
@@ -45,12 +40,7 @@ export default {
       places: [],
       popularPlaces: [],
       localPlaces: [],
-      trendPlaces: [
-        {
-          category: 'Latest Trend Places',
-          places: [],
-        },
-      ],
+      trendCitys: [],
     }
   },
   methods: {
@@ -61,7 +51,6 @@ export default {
         .then((res) => {
           // console.log(res.data.data.docs)
           this.places = res.data.data.docs
-          console.log(this.places)
         })
     },
     //get popular place
@@ -80,6 +69,12 @@ export default {
         this.localPlaces = res.data.data
       })
     },
+    //get Trendind
+    getTrending() {
+      this.$axios.get('/trending/get/all').then((res) => {
+        this.trendCitys = res.data.data.docs
+      })
+    },
     //responsive mobile
     handleResize() {
       if (window.innerWidth < 1281 && this.show == true) {
@@ -95,6 +90,7 @@ export default {
     this.getLocalPlace()
     this.getPlace()
     this.getPopular()
+    this.getTrending()
   },
 }
 </script>

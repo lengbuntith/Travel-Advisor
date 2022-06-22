@@ -74,7 +74,6 @@ export default {
           this.isLoading = false
           this.text = "You've commented"
           this.snackbar = true
-          console.log(res.data.data)
           this.$nuxt.$emit('getSuggestion')
         })
         .catch((error) => {

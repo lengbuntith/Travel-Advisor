@@ -42,9 +42,6 @@ export default {
         this.images = place.thumbnail
         this.name = place.name
 
-        // console.log(place.thumbnail[0])
-        console.log(this.thumbnail)
-
         // this.currentImage = place.images[0]
         this.currentImage = place.thumbnail[0]
         // this.totalIndex = place.images.length - 1

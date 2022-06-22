@@ -31,7 +31,7 @@
             <v-btn icon to="/account">
               <v-btn
                 icon
-                color="teaf"
+                color="red"
                 @click="removeSaved(favorite.place._id)"
                 :loading="loading"
               >

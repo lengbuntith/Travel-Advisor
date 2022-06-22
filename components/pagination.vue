@@ -44,7 +44,9 @@ export default {
     //get place data from api
     getItems(page) {
       this.$axios
-        .get(`/place/all?page=${page}&select=story,averageRating,city`)
+        .get(
+          `/place/all?page=${page}&item_per_page=16&select=story,averageRating,city`
+        )
         .then((res) => {
           // console.log('get place', res.data.data)
           this.allPlaces = res.data.data.docs
