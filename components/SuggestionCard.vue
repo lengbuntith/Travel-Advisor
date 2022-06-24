@@ -31,7 +31,7 @@
 
           <v-card class="pa-2 pa-md-4">
             <center><h3 class="mb-5">Create Suggestion</h3></center>
-            <form @submit.prevent="createEvent">
+            <form @submit.prevent="createSuggestion">
               <v-autocomplete
                 :item-text="'title'"
                 :items="items"
@@ -52,8 +52,13 @@
                 name="message"
                 required
                 type="text"
+                @keyup.enter="createSuggestion()"
               ></v-textarea>
-              <v-btn class="mr-4 blue darken-1 white--text" type="submit">
+              <v-btn
+                class="mr-4 blue darken-1 white--text"
+                type="submit"
+                :loading="loading"
+              >
                 Post
               </v-btn>
               <v-btn type="reset" @click="clear" class="red--text">
@@ -82,7 +87,7 @@
                 Posted: {{ convertDate(suggestion.createdAt) }}
               </div>
               <div class="suggest mb-3" v-show="tabs == 'owner'">
-                <div class="d-flex">
+                <div class="d-flex" v-if="suggestion.user">
                   <v-btn v-if="checkUserOwnComment(suggestion.user._id)" icon>
                     <!-- <v-btn icon color="blue" class="mr-2" :loading="loading">
                       <v-icon small>mdi-pencil</v-icon>
@@ -230,9 +235,9 @@ export default {
       this.input.place = place_id._id
     },
 
-    //create event
-    createEvent() {
-      console.log(this.input.place, this.input.message)
+    //create suggestion
+    createSuggestion() {
+      this.loading = true
       this.$axios
         .post('/suggestion/create', {
           place_id: this.input.place,
@@ -247,10 +252,13 @@ export default {
           }
           this.getSuggestion(page, sort)
         })
-      this.dialog = false
-      this.snackbar = true
-      this.input.message = ''
-      this.input.place = ''
+      setTimeout(() => {
+        this.loading = false
+        this.dialog = false
+        this.snackbar = true
+        this.input.message = ''
+        this.input.place = ''
+      }, 2000)
     },
     //add like
     addLiked(suggestionId) {
@@ -338,6 +346,7 @@ export default {
         }
         if (page) this.page = parseInt(page)
 
+        this.suggestions = ['', '', '', '', '', '']
         this.getSuggestion(page, sort)
 
         //get place to let user choice for post

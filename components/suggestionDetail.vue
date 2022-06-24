@@ -131,14 +131,7 @@
               </div>
               <div>
                 <v-btn v-if="checkUserOwnComment(comment.user._id)" icon>
-                  <v-btn
-                    icon
-                    color="teaf"
-                    @click="deleteComment(comment._id)"
-                    :loading="loading"
-                  >
-                    <v-icon>mdi-delete</v-icon>
-                  </v-btn>
+                  <deleteCommentSuggest :commentId="comment._id" />
                 </v-btn>
               </div>
             </div>
@@ -261,18 +254,6 @@ export default {
       if (userId == user_id) status = true
       return status
     },
-    async deleteComment(comment_id) {
-      this.loading = true
-      const res = await this.$axios.delete(
-        `/commentsuggestion/delete/${comment_id}`
-      )
-      console.log('delete comment', res.data)
-      this.getSuggestionById(this.suggestionId, 1)
-      this.colorMessage = ' green--text'
-      this.loading = false
-      this.text = 'Delete comment successful'
-      this.snackbar = true
-    },
     //check liked by suggestion
     getSuggestionById(id, skip) {
       this.$axios
@@ -295,8 +276,17 @@ export default {
         })
     },
   },
-  created() {
+  mounted() {
     this.getSuggestionById(this.suggestionId, 0)
+  },
+  created() {
+    this.$nuxt.$on('getSuggestionById', () => {
+      this.getSuggestionById(this.suggestionId, 0)
+    })
+  },
+
+  beforeDestroy() {
+    this.$nuxt.$off('getSuggestionById')
   },
 }
 </script>

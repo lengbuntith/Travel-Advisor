@@ -29,14 +29,7 @@
           </div>
           <div class="d-flex align-center">
             <v-btn icon to="/account">
-              <v-btn
-                icon
-                color="red"
-                @click="removeSaved(favorite.place._id)"
-                :loading="loading"
-              >
-                <v-icon>mdi-delete</v-icon>
-              </v-btn>
+              <removeSaved :saveId="favorite.place._id" />
             </v-btn>
           </div>
         </div>
@@ -62,19 +55,6 @@ export default {
   },
 
   methods: {
-    //remove save
-    removeSaved(id) {
-      this.loading = true
-      this.$axios
-        .post('/saved/add', {
-          placeID: id,
-        })
-        .then((res) => {
-          this.loading = false
-          this.getSave()
-          console.log('Delete')
-        })
-    },
     //get all save by user
     getSave() {
       this.$axios.get('/saved/me').then((res) => {
@@ -83,8 +63,17 @@ export default {
       })
     },
   },
-  created() {
+  mounted() {
     this.getSave()
+  },
+  created() {
+    this.$nuxt.$on('getSave', () => {
+      this.getSave()
+    })
+  },
+
+  beforeDestroy() {
+    this.$nuxt.$off('getSave')
   },
 }
 </script>

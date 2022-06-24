@@ -19,6 +19,7 @@
       @click:append-outer="sendMessage"
       @click:prepend="changeIcon"
       @click:clear="clearMessage"
+      @keyup.enter="sendMessage()"
       dense
     ></v-text-field>
   </div>
@@ -71,10 +72,13 @@ export default {
           suggestionID: this.suggestionId,
         })
         .then((res) => {
-          this.isLoading = false
-          this.text = "You've commented"
-          this.snackbar = true
           this.$nuxt.$emit('getSuggestion')
+
+          setTimeout(() => {
+            this.isLoading = false
+            this.text = "You've commented"
+            this.snackbar = true
+          }, 2000)
         })
         .catch((error) => {
           console.log(error.response.data)

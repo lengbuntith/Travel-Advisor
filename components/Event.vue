@@ -60,15 +60,14 @@
                 type="text"
                 name="requirement"
               ></v-textarea>
-              <v-btn class="mr-4 blue lighten-2 white--text" type="submit">
+              <v-btn
+                class="mr-4 blue lighten-2 white--text"
+                type="submit"
+                :loading="isLoading"
+              >
                 Post
               </v-btn>
-              <v-btn
-                type="reset"
-                :loading="isLoading"
-                @click="clear"
-                class="red--text"
-              >
+              <v-btn type="reset" @click="clear" class="red--text">
                 Close
               </v-btn>
             </form>
@@ -260,12 +259,14 @@ export default {
           if (this.$route.query.each_user)
             this.by_user = this.$route.query.each_user
           this.getEvent(page, sort)
-          this.isLoading = false
         })
-      this.dialog = false
-      this.input.place = ''
-      this.input.describe = ''
-      this.input.requirement = ''
+      setTimeout(() => {
+        this.isLoading = false
+        this.dialog = false
+        this.input.place = ''
+        this.input.describe = ''
+        this.input.requirement = ''
+      }, 2000)
     },
     //check owner if owner can delete their comment
     checkUserOwnComment(userId) {
@@ -318,7 +319,7 @@ export default {
           }
         }
         if (page) this.page = parseInt(page)
-
+        this.events = ['', '', '', '', '', '']
         this.getEvent(page, sort)
 
         //get place to let user choice for post

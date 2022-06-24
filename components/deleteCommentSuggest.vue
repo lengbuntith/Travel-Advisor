@@ -6,34 +6,39 @@
     <v-btn
       icon
       color="red"
-      @click="deleteSuggestion(suggestionId)"
+      @click="deleteComment(commentId)"
       :loading="loading"
     >
-      <v-icon small>mdi-delete</v-icon>
+      <v-icon>mdi-delete</v-icon>
     </v-btn>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['suggestionId'],
+  props: ['commentId'],
   data() {
     return {
+      colorMessage: '',
       loading: false,
       text: '',
       snackbar: false,
     }
   },
   methods: {
-    async deleteSuggestion(suggestionId) {
+    async deleteComment(comment_id) {
       this.loading = true
-      const res = await this.$axios.delete(`/suggestion/delete/${suggestionId}`)
-      this.text = 'Delete comment successful'
+      const res = await this.$axios.delete(
+        `/commentsuggestion/delete/${comment_id}`
+      )
+      this.$nuxt.$emit('getSuggestionById')
 
-      this.$nuxt.$emit('getSuggestion')
       setTimeout(() => {
-        this.snackbar = true
+        //   this.getSuggestionById(this.suggestionId, 1)
+        this.colorMessage = ' green--text'
         this.loading = false
+        this.text = 'Delete comment successful'
+        this.snackbar = true
       }, 2000)
     },
   },

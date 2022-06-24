@@ -199,7 +199,7 @@ export default {
   },
   created() {
     //get places data
-    this.$axios.get('/place/all?num_per_page=200').then((res) => {
+    this.$axios.get('/place/all?item_per_page=200').then((res) => {
       this.places = res.data.data.docs
     })
   },
