@@ -157,7 +157,7 @@
                 </div>
               </div>
             </div>
-            <div class="line-clamp mt-1" style="height: 80px">
+            <div class="line-clamp mt-1" style="height: 88px">
               {{ suggestion.message }}
             </div>
           </v-card-text>
