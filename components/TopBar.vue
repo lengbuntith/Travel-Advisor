@@ -200,4 +200,8 @@ export default {
 .search #input-23 {
   color: black !important;
 }
+a {
+  font-weight: 500;
+  text-decoration: none;
+}
 </style>

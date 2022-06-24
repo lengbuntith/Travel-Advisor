@@ -52,14 +52,14 @@ export default {
 
 <style lang="scss" scoped>
 .v-tab:hover:not(.v-tab--active) {
-  border-top: 4px solid rgba(251, 193, 46, 0.4);
-  background-color: rgba(64, 179, 162, 0.2);
+  border-top: 4px solid rgba(251, 193, 46, 0.4) !important;
+  background-color: rgba(64, 179, 162, 0.2) !important;
 }
 .v-tab--active {
   transition: 0.1s ease-in-out;
-  border-top: 2px solid #fbc02d;
-  background-color: rgba(64, 179, 162);
-  border-left: 2px solid rgba(251, 193, 46, 1);
+  border-top: 2px solid #fbc02d !important;
+  background-color: rgba(64, 179, 162) !important;
+  border-left: 2px solid rgba(251, 193, 46, 1) !important;
   color: white;
 }
 .drop {
