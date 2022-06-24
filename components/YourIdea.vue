@@ -8,7 +8,7 @@
     </v-snackbar>
     <v-text-field
       v-model="message"
-      append-outer-icon="mdi-send"
+      append-outer-icon="mdi-comment-arrow-right"
       filled
       clear-icon="mdi-close-circle"
       clearable
@@ -73,12 +73,13 @@ export default {
         })
         .then((res) => {
           this.$nuxt.$emit('getSuggestion')
+          this.$nuxt.$emit('getSuggestionById')
 
           setTimeout(() => {
             this.isLoading = false
             this.text = "You've commented"
             this.snackbar = true
-          }, 2000)
+          }, 2500)
         })
         .catch((error) => {
           console.log(error.response.data)

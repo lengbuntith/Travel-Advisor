@@ -94,6 +94,7 @@
                 </v-card-text>
               </div>
             </div>
+            <YourIdea :suggestionId="suggestionId" />
           </v-card>
           <v-card
             style="position: sticky; top: 0; z-index: 998"
