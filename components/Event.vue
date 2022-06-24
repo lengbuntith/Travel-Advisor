@@ -148,7 +148,7 @@
             <v-btn
               color="success"
               style="border-radius: 4px"
-              to="/event"
+              to=""
               @click="snackbar = true"
             >
               Join
