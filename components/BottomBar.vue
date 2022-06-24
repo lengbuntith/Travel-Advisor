@@ -60,7 +60,7 @@ export default {
   border-top: 2px solid #fbc02d !important;
   background-color: rgba(64, 179, 162) !important;
   border-left: 2px solid rgba(251, 193, 46, 1) !important;
-  color: white;
+  color: white !important;
 }
 .drop {
   animation: drop 0.4s forwards;
