@@ -1,16 +1,9 @@
 <template>
   <div>
-    <div class="d-flex justify-center align-center flex-column">
+    <div class="d-flex justify-center align-center flex-column mb-5 mt-4">
       <h2>Frequently Asked Questions</h2>
-      <div class="ma-10">
-        <v-tabs>
-          <v-tab>Item One</v-tab>
-          <v-tab>Item Two</v-tab>
-          <v-tab>Item Three</v-tab>
-        </v-tabs>
-      </div>
     </div>
-    <v-card class="pa-5" elevation="2" tile>
+    <v-card class="pa-5 mb-10" elevation="0" tile color="#fafafa">
       <Faq />
     </v-card>
   </div>

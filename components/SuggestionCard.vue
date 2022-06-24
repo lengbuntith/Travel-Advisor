@@ -12,7 +12,9 @@
       >
         <v-tab class="ma-0" href="#all" @click="handlerSort(1)"> Oldest </v-tab>
         <v-tab href="#newest" @click="handlerSort(-1)"> Newest </v-tab>
-        <v-tab href="#owner" @click="handlerOwn()"> Your posts </v-tab>
+        <v-tab href="#owner" v-show="$auth.loggedIn" @click="handlerOwn()">
+          Your posts
+        </v-tab>
         <v-tabs-slider color="yellow"></v-tabs-slider>
       </v-tabs>
       <div class="text-center" v-show="this.$auth.loggedIn">
@@ -80,18 +82,25 @@
       >
         <v-card height="600" outlined style="border-radius: 6px">
           <v-card-text>
+            <v-skeleton-loader
+              v-show="suggestion == ''"
+              elevation="0"
+              class="mx-auto"
+              max-width="300"
+              max-height="349"
+              type="card-avatar, list-item-two-line, list-item"
+            ></v-skeleton-loader>
             <div class="d-flex align-center">
               <div
+                v-if="suggestion.user"
                 style="font-size: 10px; color: rgba(0, 0, 0, 0.6); width: 90%"
               >
                 Posted: {{ convertDate(suggestion.createdAt) }}
               </div>
+              <!-- delete & edit suggestion -->
               <div class="suggest mb-3" v-show="tabs == 'owner'">
                 <div class="d-flex" v-if="suggestion.user">
                   <v-btn v-if="checkUserOwnComment(suggestion.user._id)" icon>
-                    <!-- <v-btn icon color="blue" class="mr-2" :loading="loading">
-                      <v-icon small>mdi-pencil</v-icon>
-                    </v-btn> -->
                     <editSuggest :suggestionId="suggestion._id" />
                   </v-btn>
                   <v-btn v-if="checkUserOwnComment(suggestion.user._id)" icon>

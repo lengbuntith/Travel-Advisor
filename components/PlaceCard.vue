@@ -19,6 +19,20 @@
 
     <!-- Card all places -->
     <v-card
+      v-show="place == ''"
+      max-height="300"
+      elevation="0"
+      class="pointer image-slide"
+    >
+      <v-skeleton-loader
+        class="mx-auto"
+        max-width="300"
+        max-height="200"
+        type="card"
+      ></v-skeleton-loader>
+    </v-card>
+    <v-card
+      v-show="place"
       class="pointer image-slide"
       elevation="0"
       :to="`/place/${place._id}`"

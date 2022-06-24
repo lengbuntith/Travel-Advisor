@@ -12,10 +12,12 @@
       >
         <v-tab class="ma-0" href="#all" @click="handlerSort(1)"> Oldest </v-tab>
         <v-tab href="#newest" @click="handlerSort(-1)"> Newest </v-tab>
-        <v-tab href="#owner" @click="handlerOwn()"> Your Posts </v-tab>
+        <v-tab href="#owner" v-show="$auth.loggedIn" @click="handlerOwn()">
+          Your Posts
+        </v-tab>
         <v-tabs-slider color="DarkCyan"></v-tabs-slider>
       </v-tabs>
-      <div class="text-center" v-show="this.$auth.loggedIn">
+      <div class="text-center" v-show="$auth.loggedIn">
         <v-dialog v-model="dialog" width="500" close-delay="1.2">
           <template v-slot:activator="{ on, attrs }">
             <v-btn
@@ -89,6 +91,14 @@
           <div class="px-2">
             <div>
               <div>
+                <v-skeleton-loader
+                  v-show="event == ''"
+                  elevation="0"
+                  class="mx-auto"
+                  max-width="300"
+                  max-height="315"
+                  type="list-item-avatar-two-line, card, list-item-two-line, button"
+                ></v-skeleton-loader>
                 <div
                   class="my-1 ml-3 d-flex flex-row align-center"
                   v-if="event.user"
@@ -279,6 +289,8 @@ export default {
 
     //get All event data
     getEvent(page, sort) {
+      console.log(this.events)
+
       this.$axios
         .get(
           `/event/all?page=${page}&sort=${sort}&num_per_page=12&each_user=${this.by_user}`

@@ -42,7 +42,11 @@
               <h3>Useful Links</h3>
               <ul>
                 <li><nuxt-link to="/">Home</nuxt-link></li>
-                <li><nuxt-link to="/suggestion?page=1&sort=-1">Suggestion</nuxt-link></li>
+                <li>
+                  <nuxt-link to="/suggestion?page=1&sort=-1"
+                    >Suggestion</nuxt-link
+                  >
+                </li>
                 <li><nuxt-link to="/event?page=1&sort=-1">Event</nuxt-link></li>
                 <li><nuxt-link to="/login">Login</nuxt-link></li>
               </ul>
@@ -71,15 +75,15 @@
                   >
                 </li>
                 <li>
-                  <nuxt-link to="mailto:abc@gmail.com"
+                  <nuxt-link to="mailto:travel-advisor-kh@gmail.com"
                     ><i class="fal fa-envelope fa-sm"></i>
-                    abc@gmail.com</nuxt-link
+                    travel-advisor-kh@gmail.com</nuxt-link
                   >
                 </li>
                 <li>
-                  <nuxt-link to="tel:+855975678324"
-                    ><i class="fal fa-phone-square-alt fa-md"></i> 097 34335
-                    21</nuxt-link
+                  <nuxt-link to="tel:+8550123456789"
+                    ><i class="fal fa-phone-square-alt fa-md"></i> 012 345
+                    6789</nuxt-link
                   >
                 </li>
               </ul>

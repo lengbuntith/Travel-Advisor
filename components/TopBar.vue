@@ -22,26 +22,12 @@
           <v-btn icon>
             <v-icon>mdi-heart</v-icon>
             <v-menu bottom left>
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn icon color="rgba(64, 179, 162)" v-bind="attrs" v-on="on">
-                  <v-icon>mdi-dots-vertical</v-icon>
-                </v-btn>
-              </template>
-
               <v-list>
                 <v-list-item v-for="(item, i) in items" :key="i">
                   <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-menu>
-
-            <template v-slot:extension>
-              <v-tabs align-with-title>
-                <v-tab>Tab 1</v-tab>
-                <v-tab>Tab 2</v-tab>
-                <v-tab>Tab 3</v-tab>
-              </v-tabs>
-            </template>
           </v-btn>
         </div>
 
@@ -161,7 +147,9 @@
       <v-list dense>
         <v-list-item v-for="(item, index) in items" :key="index" link>
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <nuxt-link :to="`/${item.routee}`">
+              <v-list-item-title>{{ item.title }}</v-list-item-title></nuxt-link
+            >
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -179,10 +167,10 @@ export default {
       search: null,
       select: null,
       items: [
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me 2' },
+        { title: 'Home', routee: '' },
+        { title: 'Suggestion', routee: 'suggestion?page=1&sort=-1' },
+        { title: 'Event', routee: 'event?page=1&sort=-1' },
+        { title: 'Login', routee: 'login' },
       ],
       places: [],
     }

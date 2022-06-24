@@ -37,10 +37,10 @@ export default {
     return {
       show: true,
       windowWidth: window.innerWidth,
-      places: [],
-      popularPlaces: [],
+      places: ['', '', '', '', '', ''],
+      popularPlaces: ['', '', '', '', '', ''],
       localPlaces: [],
-      trendCitys: [],
+      trendCitys: ['', '', ''],
     }
   },
   methods: {
@@ -60,7 +60,9 @@ export default {
           '/place/all?item_per_page=6&most_comment=true&select=story,averageRating,city'
         )
         .then((res) => {
-          this.popularPlaces = res.data.data.docs
+          setTimeout(() => {
+            this.popularPlaces = res.data.data.docs
+          }, 3000)
         })
     },
     //get popular place
